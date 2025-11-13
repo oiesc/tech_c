@@ -92,233 +92,107 @@ abstract class AppLocalizations {
   /// A list of this localizations delegate's supported locales.
   static const List<Locale> supportedLocales = <Locale>[Locale('en'), Locale('pt')];
 
-  /// The title of the application
-  ///
-  /// In en, this message translates to:
-  /// **'Flutter Base Project'**
-  String get appTitle;
-
-  /// Error message when app fails to initialize
+  /// No description provided for @appErrorInitializing.
   ///
   /// In en, this message translates to:
   /// **'Error initializing app'**
   String get appErrorInitializing;
 
-  /// Button text to retry an operation
+  /// No description provided for @appTryAgain.
   ///
   /// In en, this message translates to:
   /// **'Try Again'**
   String get appTryAgain;
 
-  /// Version label
+  /// No description provided for @appVersion.
   ///
   /// In en, this message translates to:
   /// **'Version'**
   String get appVersion;
 
-  /// App name label
+  /// No description provided for @appName.
   ///
   /// In en, this message translates to:
   /// **'App Name'**
   String get appName;
 
-  /// Home navigation label
+  /// No description provided for @navHome.
   ///
   /// In en, this message translates to:
   /// **'Home'**
   String get navHome;
 
-  /// Settings navigation label
+  /// No description provided for @homeWelcome.
   ///
   /// In en, this message translates to:
-  /// **'Settings'**
-  String get navSettings;
-
-  /// Page not found title
-  ///
-  /// In en, this message translates to:
-  /// **'Page Not Found'**
-  String get navPageNotFound;
-
-  /// Page not found message with path
-  ///
-  /// In en, this message translates to:
-  /// **'Page not found: {path}'**
-  String navPageNotFoundMessage(String path);
-
-  /// Button to go to home page
-  ///
-  /// In en, this message translates to:
-  /// **'Go Home'**
-  String get navGoHome;
-
-  /// Welcome message on home page
-  ///
-  /// In en, this message translates to:
-  /// **'Welcome to Flutter Base Project'**
+  /// **'Welcome to Tech_C'**
   String get homeWelcome;
 
-  /// Title for feature list
-  ///
-  /// In en, this message translates to:
-  /// **'This is a Flutter base project with:'**
-  String get homeFeatureTitle;
-
-  /// Clean architecture feature
-  ///
-  /// In en, this message translates to:
-  /// **'• Clean Architecture with MVVM'**
-  String get homeFeatureCleanArch;
-
-  /// State management feature
-  ///
-  /// In en, this message translates to:
-  /// **'• Custom State Management Store'**
-  String get homeFeatureStateManagement;
-
-  /// Internationalization feature
-  ///
-  /// In en, this message translates to:
-  /// **'• Internationalization (i18n)'**
-  String get homeFeatureI18n;
-
-  /// Theme management feature
-  ///
-  /// In en, this message translates to:
-  /// **'• Theme Management (Light/Dark)'**
-  String get homeFeatureTheme;
-
-  /// Navigation feature
-  ///
-  /// In en, this message translates to:
-  /// **'• GoRouter for Navigation'**
-  String get homeFeatureNavigation;
-
-  /// Project structure feature
-  ///
-  /// In en, this message translates to:
-  /// **'• Feature-based Structure'**
-  String get homeFeatureStructure;
-
-  /// Button description in home
-  ///
-  /// In en, this message translates to:
-  /// **'Click here...'**
-  String get homeButtonMessage;
-
-  /// Home page title
-  ///
-  /// In en, this message translates to:
-  /// **'Home'**
-  String get home;
-
-  /// Welcome message
-  ///
-  /// In en, this message translates to:
-  /// **'Welcome to Flutter Base Project'**
-  String get welcome;
-
-  /// Settings page title
-  ///
-  /// In en, this message translates to:
-  /// **'Settings'**
-  String get settings;
-
-  /// Settings page title
+  /// No description provided for @settingsTitle.
   ///
   /// In en, this message translates to:
   /// **'Settings'**
   String get settingsTitle;
 
-  /// Theme section title
+  /// No description provided for @settingsThemeSection.
   ///
   /// In en, this message translates to:
   /// **'Theme'**
   String get settingsThemeSection;
 
-  /// Language section title
+  /// No description provided for @settingsLanguageSection.
   ///
   /// In en, this message translates to:
   /// **'Language'**
   String get settingsLanguageSection;
 
-  /// App information section title
+  /// No description provided for @settingsAppInfoSection.
   ///
   /// In en, this message translates to:
   /// **'App Information'**
   String get settingsAppInfoSection;
 
-  /// Light theme option
+  /// No description provided for @settingsThemeLight.
   ///
   /// In en, this message translates to:
   /// **'Light'**
   String get settingsThemeLight;
 
-  /// Dark theme option
+  /// No description provided for @settingsThemeDark.
   ///
   /// In en, this message translates to:
   /// **'Dark'**
   String get settingsThemeDark;
 
-  /// System theme option
+  /// No description provided for @settingsThemeSystem.
   ///
   /// In en, this message translates to:
   /// **'System'**
   String get settingsThemeSystem;
 
-  /// English language option
+  /// No description provided for @settingsLanguageEnglish.
   ///
   /// In en, this message translates to:
   /// **'English'**
   String get settingsLanguageEnglish;
 
-  /// Portuguese language option
+  /// No description provided for @settingsLanguagePortuguese.
   ///
   /// In en, this message translates to:
   /// **'Português'**
   String get settingsLanguagePortuguese;
 
-  /// Error message when settings fail to load
+  /// No description provided for @settingsErrorLoading.
   ///
   /// In en, this message translates to:
   /// **'Error loading settings: {error}'**
-  String settingsErrorLoading(String error);
+  String settingsErrorLoading(Object error);
 
-  /// Retry button text
+  /// No description provided for @settingsRetry.
   ///
   /// In en, this message translates to:
   /// **'Retry'**
   String get settingsRetry;
-
-  /// Language selection label
-  ///
-  /// In en, this message translates to:
-  /// **'Language'**
-  String get language;
-
-  /// Theme selection label
-  ///
-  /// In en, this message translates to:
-  /// **'Theme'**
-  String get theme;
-
-  /// Light theme option
-  ///
-  /// In en, this message translates to:
-  /// **'Light'**
-  String get light;
-
-  /// Dark theme option
-  ///
-  /// In en, this message translates to:
-  /// **'Dark'**
-  String get dark;
-
-  /// System theme option
-  ///
-  /// In en, this message translates to:
-  /// **'System'**
-  String get system;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

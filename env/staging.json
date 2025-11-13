@@ -4,7 +4,7 @@
   "API_KEY": "staging_api_key_here",
   "DEBUG_MODE": "false",
   "ANALYTICS_ENABLED": "true",
-  "APP_NAME": "Flutter Base Project (Staging)",
+  "APP_NAME": "Tech_C (Staging)",
   "CONNECTION_TIMEOUT": "25000",
   "RECEIVE_TIMEOUT": "25000"
 }

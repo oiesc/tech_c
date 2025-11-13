@@ -4,7 +4,7 @@
   "API_KEY": "local_dev_key",
   "DEBUG_MODE": "true",
   "ANALYTICS_ENABLED": "false",
-  "APP_NAME": "Flutter Base Project (Local)",
+  "APP_NAME": "Tech_C (Local)",
   "CONNECTION_TIMEOUT": "60000",
   "RECEIVE_TIMEOUT": "60000"
 }

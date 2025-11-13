@@ -1,31 +1,13 @@
 {
   "@@locale": "pt",
-  "appTitle": "Projeto Base Flutter",
   "appErrorInitializing": "Erro ao inicializar aplicativo",
   "appTryAgain": "Tentar Novamente",
   "appVersion": "Versão",
   "appName": "Nome do App",
   
   "navHome": "Início",
-  "navSettings": "Configurações",
-  "navPageNotFound": "Página Não Encontrada",
-  "navPageNotFoundMessage": "Página não encontrada: {path}",
-  "navGoHome": "Ir para Início",
   
-  "homeWelcome": "Bem-vindo ao Projeto Base Flutter",
-  "homeFeatureTitle": "Este é um projeto base Flutter com:",
-  "homeFeatureCleanArch": "• Clean Architecture com MVVM",
-  "homeFeatureStateManagement": "• Sistema de Gerenciamento de Estado Customizado",
-  "homeFeatureI18n": "• Internacionalização (i18n)",
-  "homeFeatureTheme": "• Gerenciamento de Tema (Claro/Escuro)",
-  "homeFeatureNavigation": "• GoRouter para Navegação",
-  "homeFeatureStructure": "• Estrutura Baseada em Features",
-  "homeButtonMessage": "Clique aqui...",
-  
-  "home": "Início",
-  "welcome": "Bem-vindo ao Projeto Base Flutter",
-
-  "settings": "Configurações",
+  "homeWelcome": "Bem-vindo ao Tech_C",
   
   "settingsTitle": "Configurações",
   "settingsThemeSection": "Tema",
@@ -37,11 +19,5 @@
   "settingsLanguageEnglish": "English",
   "settingsLanguagePortuguese": "Português",
   "settingsErrorLoading": "Erro ao carregar configurações: {error}",
-  "settingsRetry": "Tentar Novamente",
-  
-  "language": "Idioma",
-  "theme": "Tema",
-  "light": "Claro",
-  "dark": "Escuro",
-  "system": "Sistema"
+  "settingsRetry": "Tentar Novamente"
 }

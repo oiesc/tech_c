@@ -1,10 +1,10 @@
 {
   "ENVIRONMENT": "development",
-  "API_BASE_URL": "https://api-dev.example.com",
+  "API_BASE_URL": "https://raw.githubusercontent.com/Biuni/PokemonGo-Pokedex/master/pokedex.json",
   "API_KEY": "dev_api_key_here",
   "DEBUG_MODE": "true",
   "ANALYTICS_ENABLED": "false",
-  "APP_NAME": "Flutter Base Project (Dev)",
+  "APP_NAME": "Tech_C (Dev)",
   "CONNECTION_TIMEOUT": "30000",
   "RECEIVE_TIMEOUT": "30000"
 }

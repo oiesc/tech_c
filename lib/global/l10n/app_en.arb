@@ -1,173 +1,23 @@
 {
   "@@locale": "en",
-  "appTitle": "Flutter Base Project",
-  "@appTitle": {
-    "description": "The title of the application"
-  },
   "appErrorInitializing": "Error initializing app",
-  "@appErrorInitializing": {
-    "description": "Error message when app fails to initialize"
-  },
   "appTryAgain": "Try Again",
-  "@appTryAgain": {
-    "description": "Button text to retry an operation"
-  },
   "appVersion": "Version",
-  "@appVersion": {
-    "description": "Version label"
-  },
   "appName": "App Name",
-  "@appName": {
-    "description": "App name label"
-  },
   
   "navHome": "Home",
-  "@navHome": {
-    "description": "Home navigation label"
-  },
-  "navSettings": "Settings",
-  "@navSettings": {
-    "description": "Settings navigation label"
-  },
-  "navPageNotFound": "Page Not Found",
-  "@navPageNotFound": {
-    "description": "Page not found title"
-  },
-  "navPageNotFoundMessage": "Page not found: {path}",
-  "@navPageNotFoundMessage": {
-    "description": "Page not found message with path",
-    "placeholders": {
-      "path": {
-        "type": "String",
-        "description": "The path that was not found"
-      }
-    }
-  },
-  "navGoHome": "Go Home",
-  "@navGoHome": {
-    "description": "Button to go to home page"
-  },
   
-  "homeWelcome": "Welcome to Flutter Base Project",
-  "@homeWelcome": {
-    "description": "Welcome message on home page"
-  },
-  "homeFeatureTitle": "This is a Flutter base project with:",
-  "@homeFeatureTitle": {
-    "description": "Title for feature list"
-  },
-  "homeFeatureCleanArch": "• Clean Architecture with MVVM",
-  "@homeFeatureCleanArch": {
-    "description": "Clean architecture feature"
-  },
-  "homeFeatureStateManagement": "• Custom State Management Store",
-  "@homeFeatureStateManagement": {
-    "description": "State management feature"
-  },
-  "homeFeatureI18n": "• Internationalization (i18n)",
-  "@homeFeatureI18n": {
-    "description": "Internationalization feature"
-  },
-  "homeFeatureTheme": "• Theme Management (Light/Dark)",
-  "@homeFeatureTheme": {
-    "description": "Theme management feature"
-  },
-  "homeFeatureNavigation": "• GoRouter for Navigation",
-  "@homeFeatureNavigation": {
-    "description": "Navigation feature"
-  },
-  "homeFeatureStructure": "• Feature-based Structure",
-  "@homeFeatureStructure": {
-    "description": "Project structure feature"
-  },
-  "homeButtonMessage": "Click here...",
-  "@homeButtonMessage": {
-    "description": "Button description in home"
-  },
-  
-  "home": "Home",
-  "@home": {
-    "description": "Home page title"
-  },
-  "welcome": "Welcome to Flutter Base Project",
-  "@welcome": {
-    "description": "Welcome message"
-  },
-
-  "settings": "Settings",
-  "@settings": {
-    "description": "Settings page title"
-  },
+  "homeWelcome": "Welcome to Tech_C",
   
   "settingsTitle": "Settings",
-  "@settingsTitle": {
-    "description": "Settings page title"
-  },
   "settingsThemeSection": "Theme",
-  "@settingsThemeSection": {
-    "description": "Theme section title"
-  },
   "settingsLanguageSection": "Language",
-  "@settingsLanguageSection": {
-    "description": "Language section title"
-  },
   "settingsAppInfoSection": "App Information",
-  "@settingsAppInfoSection": {
-    "description": "App information section title"
-  },
   "settingsThemeLight": "Light",
-  "@settingsThemeLight": {
-    "description": "Light theme option"
-  },
   "settingsThemeDark": "Dark",
-  "@settingsThemeDark": {
-    "description": "Dark theme option"
-  },
   "settingsThemeSystem": "System",
-  "@settingsThemeSystem": {
-    "description": "System theme option"
-  },
   "settingsLanguageEnglish": "English",
-  "@settingsLanguageEnglish": {
-    "description": "English language option"
-  },
   "settingsLanguagePortuguese": "Português",
-  "@settingsLanguagePortuguese": {
-    "description": "Portuguese language option"
-  },
   "settingsErrorLoading": "Error loading settings: {error}",
-  "@settingsErrorLoading": {
-    "description": "Error message when settings fail to load",
-    "placeholders": {
-      "error": {
-        "type": "String",
-        "description": "The error message"
-      }
-    }
-  },
-  "settingsRetry": "Retry",
-  "@settingsRetry": {
-    "description": "Retry button text"
-  },
-  
-  "language": "Language",
-  "@language": {
-    "description": "Language selection label"
-  },
-  "theme": "Theme",
-  "@theme": {
-    "description": "Theme selection label"
-  },
-  "light": "Light",
-  "@light": {
-    "description": "Light theme option"
-  },
-  "dark": "Dark",
-  "@dark": {
-    "description": "Dark theme option"
-  },
-  "system": "System",
-  "@system": {
-    "description": "System theme option"
-  }
+  "settingsRetry": "Retry"
 }

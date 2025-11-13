@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 
 import '../../../global/app_core/store/store_imports.dart';
 import '../../../global/constants/app_constants.dart';
+import '../../../global/design_system/app_bar_widget.dart';
+import '../../../global/design_system/scaffold_body.dart';
 import '../../../global/l10n/app_localizations.dart';
 import '../../../global/settings/app_settings_store.dart';
 import '../../../global/themes/app_theme_mode.dart';
@@ -16,38 +17,36 @@ class SettingsPage extends StatelessWidget {
     final settingsStore = AppSettingsStore.instance;
 
     return Scaffold(
-      appBar: AppBar(
+      appBar: AppBarWidget(
         title: Text(AppLocalizations.of(context)!.settingsTitle),
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back),
-          onPressed: () => context.pop(),
-        ),
       ),
-      body: ValueStoreBuilder<AppSettingsStore, AppSettings>(
-        store: settingsStore,
-        builder: (context, state) {
-          return state.when(
-            idle: () => const Center(child: CircularProgressIndicator()),
-            loading: () => const Center(child: CircularProgressIndicator()),
-            success: (settings) => _buildSettingsContent(context, settingsStore, settings),
-            error: (error) => Center(
-              child: Column(
-                spacing: AppConstants.mediumSpacing,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  const Icon(Icons.error, size: 48, color: Colors.red),
-                  Text(
-                    AppLocalizations.of(context)!.settingsErrorLoading(error.message),
-                  ),
-                  ElevatedButton(
-                    onPressed: () => settingsStore.initialize(),
-                    child: Text(AppLocalizations.of(context)!.settingsRetry),
-                  ),
-                ],
+      body: ScaffoldBody(
+        child: ValueStoreBuilder<AppSettingsStore, AppSettings>(
+          store: settingsStore,
+          builder: (context, state) {
+            return state.when(
+              idle: () => const Center(child: CircularProgressIndicator()),
+              loading: () => const Center(child: CircularProgressIndicator()),
+              success: (settings) => _buildSettingsContent(context, settingsStore, settings),
+              error: (error) => Center(
+                child: Column(
+                  spacing: AppConstants.mediumSpacing,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    const Icon(Icons.error, size: 48, color: Colors.red),
+                    Text(
+                      AppLocalizations.of(context)!.settingsErrorLoading(error.message),
+                    ),
+                    ElevatedButton(
+                      onPressed: () => settingsStore.initialize(),
+                      child: Text(AppLocalizations.of(context)!.settingsRetry),
+                    ),
+                  ],
+                ),
               ),
-            ),
-          );
-        },
+            );
+          },
+        ),
       ),
     );
   }

@@ -1,8 +1,8 @@
-name: flutter_base_project
-description: "A new Flutter project."
+name: tech_c
+description: "..."
 # The following line prevents the package from being accidentally published to
 # pub.dev using `flutter pub publish`. This is preferred for private packages.
-publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+publish_to: "none" # Remove this line if you wish to publish to pub.dev
 
 # The following defines the version and build number for your application.
 # A version number is three numbers separated by dots, like 1.2.43
@@ -35,31 +35,31 @@ dependencies:
 
   # UI & Icons
   cupertino_icons: ^1.0.8
-  
+
   # Internationalization
   intl: ^0.20.2
-  
+
   # Navigation
   go_router: ^16.2.1
-  
+
   # Dependency Injection
   get_it: ^8.0.2
-  
+
   # HTTP Client
   dio: ^5.7.0
-  
+
   # Shared Preferences
   shared_preferences: ^2.3.3
-  
+
   # Path provider
   path_provider: ^2.1.5
-  
+
   # JSON serialization
   json_annotation: ^4.9.0
-  
+
   # Logging
   logger: ^2.5.0
-  
+
   # Package info
   package_info_plus: ^8.1.1
 
@@ -69,11 +69,11 @@ dev_dependencies:
 
   # Linting
   flutter_lints: ^6.0.0
-  
+
   # Code generation
   build_runner: ^2.4.13
   json_serializable: ^6.8.0
-  
+
   # Testing
   mockito: ^5.4.4
 
@@ -89,11 +89,6 @@ flutter:
   # included with your application, so that you can use the icons in
   # the material Icons class.
   uses-material-design: true
-
-  # Assets
-  assets:
-    - assets/images/
-    - assets/icons/
 
   # To add assets to your application, add an assets section, like this:
   # assets:

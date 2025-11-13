@@ -1,20 +1,36 @@
-import 'package:flutter/material.dart';
-import 'package:get_it/get_it.dart';
+import 'dart:math';
 
-import '../stores/home_store.dart';
+import 'package:flutter/material.dart';
 
 mixin HomePageMixin<T extends StatefulWidget> on State<T> {
-  HomeStore get homeStore => GetIt.I<HomeStore>();
+  final circleDotNumber = 3;
+  int paintedCircleDotIndex = 0;
 
   @override
   void initState() {
     super.initState();
-    // Put any initialization logic here (after super.initState())
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      animateCircleDot();
+    });
   }
 
   @override
   void dispose() {
-    // Clean up resources if needed (before super.dispose())
     super.dispose();
+  }
+
+  void animateCircleDot() {
+    Future.delayed(const Duration(milliseconds: 500), () {
+      if (mounted) {
+        setState(() {
+          paintedCircleDotIndex = (paintedCircleDotIndex + 1) % circleDotNumber;
+        });
+        animateCircleDot();
+      }
+    });
+  }
+
+  Color getRandomColor() {
+    return Colors.primaries[Random().nextInt(Colors.primaries.length)];
   }
 }
