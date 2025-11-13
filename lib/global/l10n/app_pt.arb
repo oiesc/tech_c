@@ -7,8 +7,6 @@
   
   "navHome": "Início",
   
-  "homeWelcome": "Bem-vindo ao Tech_C",
-  
   "settingsTitle": "Configurações",
   "settingsThemeSection": "Tema",
   "settingsLanguageSection": "Idioma",
@@ -19,5 +17,8 @@
   "settingsLanguageEnglish": "English",
   "settingsLanguagePortuguese": "Português",
   "settingsErrorLoading": "Erro ao carregar configurações: {error}",
-  "settingsRetry": "Tentar Novamente"
+  "settingsRetry": "Tentar Novamente",
+  
+  "homeWelcome": "Bem-vindo ao Tech_C",
+  "homeListTitle": "Encontre seu Pokémon favorito e explore seus detalhes!"
 }

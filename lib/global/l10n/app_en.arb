@@ -7,8 +7,6 @@
   
   "navHome": "Home",
   
-  "homeWelcome": "Welcome to Tech_C",
-  
   "settingsTitle": "Settings",
   "settingsThemeSection": "Theme",
   "settingsLanguageSection": "Language",
@@ -19,5 +17,8 @@
   "settingsLanguageEnglish": "English",
   "settingsLanguagePortuguese": "Português",
   "settingsErrorLoading": "Error loading settings: {error}",
-  "settingsRetry": "Retry"
+  "settingsRetry": "Retry",
+  
+  "homeWelcome": "Welcome to Tech_C",
+  "homeListTitle": "Find your favorite Pokemon and explore their details!"
 }

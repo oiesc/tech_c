@@ -2,9 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../../global/constants/app_constants.dart';
+import '../../../../global/design_system/app_bar_widget.dart';
+import '../../../../global/design_system/scaffold_body.dart';
 import '../../../../global/l10n/app_localizations.dart';
 import '../../../../global/router/route_paths.dart';
 import '../mixins/home_page_mixin.dart';
+import '../widgets/list_view_header.dart';
 
 /// Home page of the application
 class HomePage extends StatefulWidget {
@@ -18,10 +21,9 @@ class _HomePageState extends State<HomePage> with HomePageMixin<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          AppLocalizations.of(context)!.navHome,
-        ),
+      appBar: AppBarWidget(
+        showLeading: false,
+        title: Text(AppLocalizations.of(context)!.navHome),
         actions: [
           IconButton(
             icon: const Icon(Icons.settings),
@@ -29,57 +31,44 @@ class _HomePageState extends State<HomePage> with HomePageMixin<HomePage> {
           ),
         ],
       ),
-      body: Container(
-        width: double.infinity,
-        padding: const EdgeInsets.all(AppConstants.mediumSpacing),
-        child: SingleChildScrollView(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            spacing: AppConstants.largeSpacing,
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  ...List.generate(
-                    circleDotNumber,
-                    (index) => _CircleDot(
-                      painted: index == paintedCircleDotIndex,
-                      paintColor: getRandomColor(),
+      body: ScaffoldBody(
+        child: CustomScrollView(
+          slivers: [
+            SliverPersistentHeader(
+              pinned: true,
+              delegate: ListViewHeader(
+                circleDotNumber: circleDotNumber,
+                paintedCircleDotIndex: paintedCircleDotIndex,
+                getRandomColor: getRandomColor,
+              ),
+            ),
+            SliverList.list(
+              children: [
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  spacing: AppConstants.largeSpacing,
+                  children: [
+                    AnimatedDefaultTextStyle(
+                      style: Theme.of(context).textTheme.headlineSmall!.copyWith(
+                        color: getRandomColor(),
+                        fontWeight: FontWeight.bold,
+                      ),
+                      duration: animationDuration,
+                      child: Text(
+                        AppLocalizations.of(context)!.homeWelcome,
+                        textAlign: TextAlign.center,
+                      ),
                     ),
-                  ),
-                ],
-              ),
-              Text(
-                AppLocalizations.of(context)!.homeWelcome,
-                style: Theme.of(context).textTheme.headlineSmall,
-                textAlign: TextAlign.center,
-              ),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-class _CircleDot extends StatelessWidget {
-  final bool painted;
-  final Color paintColor;
-  const _CircleDot({required this.painted, required this.paintColor});
-
-  @override
-  Widget build(BuildContext context) {
-    return AnimatedContainer(
-      duration: AppConstants.mediumAnimationDuration,
-      width: AppConstants.smallIconSize,
-      height: AppConstants.smallIconSize,
-      margin: const EdgeInsets.all(AppConstants.smallSpacing),
-      decoration: BoxDecoration(
-        color: painted ? paintColor : Colors.transparent,
-        shape: BoxShape.circle,
-        border: Border.all(
-          color: painted ? paintColor : Colors.transparent,
-          width: 2,
+                    Text(
+                      AppLocalizations.of(context)!.homeListTitle,
+                      style: Theme.of(context).textTheme.headlineSmall,
+                      textAlign: TextAlign.center,
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ],
         ),
       ),
     );

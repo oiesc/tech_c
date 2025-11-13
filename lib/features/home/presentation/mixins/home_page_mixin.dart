@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 mixin HomePageMixin<T extends StatefulWidget> on State<T> {
   final circleDotNumber = 3;
   int paintedCircleDotIndex = 0;
+  final animationDuration = const Duration(milliseconds: 500);
 
   @override
   void initState() {
@@ -20,7 +21,7 @@ mixin HomePageMixin<T extends StatefulWidget> on State<T> {
   }
 
   void animateCircleDot() {
-    Future.delayed(const Duration(milliseconds: 500), () {
+    Future.delayed(animationDuration, () {
       if (mounted) {
         setState(() {
           paintedCircleDotIndex = (paintedCircleDotIndex + 1) % circleDotNumber;

@@ -24,9 +24,6 @@ class AppLocalizationsEn extends AppLocalizations {
   String get navHome => 'Home';
 
   @override
-  String get homeWelcome => 'Welcome to Tech_C';
-
-  @override
   String get settingsTitle => 'Settings';
 
   @override
@@ -60,4 +57,10 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get settingsRetry => 'Retry';
+
+  @override
+  String get homeWelcome => 'Welcome to Tech_C';
+
+  @override
+  String get homeListTitle => 'Find your favorite Pokemon and explore their details!';
 }

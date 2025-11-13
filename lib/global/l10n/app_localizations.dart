@@ -122,12 +122,6 @@ abstract class AppLocalizations {
   /// **'Home'**
   String get navHome;
 
-  /// No description provided for @homeWelcome.
-  ///
-  /// In en, this message translates to:
-  /// **'Welcome to Tech_C'**
-  String get homeWelcome;
-
   /// No description provided for @settingsTitle.
   ///
   /// In en, this message translates to:
@@ -193,6 +187,18 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Retry'**
   String get settingsRetry;
+
+  /// No description provided for @homeWelcome.
+  ///
+  /// In en, this message translates to:
+  /// **'Welcome to Tech_C'**
+  String get homeWelcome;
+
+  /// No description provided for @homeListTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Find your favorite Pokemon and explore their details!'**
+  String get homeListTitle;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

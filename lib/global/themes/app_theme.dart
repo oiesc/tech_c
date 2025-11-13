@@ -8,12 +8,12 @@ class AppColors {
   static const Color primary = Color(0xFF6366F1);
   static const Color primaryLight = Color(0xFF818CF8);
   static const Color primaryDark = Color(0xFF4F46E5);
-  
+
   // Secondary Colors
   static const Color secondary = Color(0xFF06B6D4);
   static const Color secondaryLight = Color(0xFF22D3EE);
   static const Color secondaryDark = Color(0xFF0891B2);
-  
+
   // Neutral Colors
   static const Color white = Color(0xFFFFFFFF);
   static const Color black = Color(0xFF000000);
@@ -27,13 +27,13 @@ class AppColors {
   static const Color grey700 = Color(0xFF374151);
   static const Color grey800 = Color(0xFF1F2937);
   static const Color grey900 = Color(0xFF111827);
-  
+
   // Status Colors
   static const Color success = Color(0xFF10B981);
   static const Color warning = Color(0xFFF59E0B);
   static const Color error = Color(0xFFEF4444);
   static const Color info = Color(0xFF3B82F6);
-  
+
   // Background Colors
   static const Color backgroundLight = grey50;
   static const Color backgroundDark = grey900;
@@ -88,6 +88,12 @@ class AppTheme {
         ),
         contentPadding: const EdgeInsets.all(AppConstants.mediumSpacing),
       ),
+      listTileTheme: const ListTileThemeData(
+        minVerticalPadding: 0,
+        minLeadingWidth: 0,
+        horizontalTitleGap: AppConstants.tinySpacing,
+        contentPadding: EdgeInsets.zero,
+      ),
     );
   }
 
@@ -136,6 +142,12 @@ class AppTheme {
           borderRadius: BorderRadius.circular(AppConstants.mediumRadius),
         ),
         contentPadding: const EdgeInsets.all(AppConstants.mediumSpacing),
+      ),
+      listTileTheme: const ListTileThemeData(
+        minVerticalPadding: 0,
+        minLeadingWidth: 0,
+        horizontalTitleGap: AppConstants.tinySpacing,
+        contentPadding: EdgeInsets.zero,
       ),
     );
   }
