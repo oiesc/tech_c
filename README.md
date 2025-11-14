@@ -302,19 +302,6 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
 }
 ```
 
-#### 🚀 **ValueStore vs Cubit vs BLoC Comparison**
-
-| Feature | ValueStore | Cubit | BLoC |
-|---------|------------|-------|------|
-| **Boilerplate** | Minimal | Minimal | High (events + states) |
-| **Flexibility** | Direct methods | Direct methods | Only through events |
-| **Testability** | Excellent | Excellent | Excellent |
-| **Performance** | Optimized with ValueNotifier | Optimized with Streams | Optimized with Streams |
-| **Learning Curve** | Low | Low | Medium/High |
-| **Debugging** | Simple | Simple | Complex (streams) |
-| **Custom Architecture** | Fully customizable | BLoC ecosystem dependent | BLoC ecosystem dependent |
-| **Dependencies** | Zero external dependencies | Requires bloc package | Requires bloc package |
-
 **💡 Why Custom Implementation Over Cubit?**
 
 While **Cubit** provides similar simplicity to our ValueStore, we chose a custom implementation because:
