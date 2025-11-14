@@ -21,14 +21,14 @@ class HomeRepository {
     } on FormatException catch (e) {
       final error = HomeRepositoryErrors.formatError;
       AppLogger.error(error.message, e);
-      return Left(AppGenericFailure(message: error.message, error: e));
+      return Left(AppGenericFailure(message: error.message, code: error.code, error: e));
     } on HomeHttpErrors catch (e) {
       AppLogger.error(e.message, e);
-      return Left(AppGenericFailure(message: e.message, error: e));
+      return Left(AppGenericFailure(message: e.message, code: e.code, error: e));
     } catch (e) {
       final error = HomeRepositoryErrors.unexpectedError;
       AppLogger.error(error.message, e);
-      return Left(AppGenericFailure(message: error.message, error: e));
+      return Left(AppGenericFailure(message: error.message, code: error.code, error: e));
     }
   }
 }

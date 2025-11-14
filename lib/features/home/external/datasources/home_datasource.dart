@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:dio/dio.dart';
 
 import '../../../../global/network/app_http.dart';
@@ -11,17 +13,22 @@ class HomeDatasource {
 
   Future<Map<String, dynamic>> fetchPokemonData() async {
     try {
-      final response = await _appHttp.get(HomeEndpoints.pokemonData);
+      final response = await _appHttp.get(
+        HomeEndpoints.pokemonData,
+        options: Options(responseType: ResponseType.json),
+      );
 
       if (response.data == null) {
         throw HomeHttpErrors.nullData;
       }
 
-      if (response.data is! Map<String, dynamic>) {
+      final data = jsonDecode(response.data.toString());
+
+      if (data is! Map<String, dynamic>) {
         throw HomeHttpErrors.invalidData;
       }
 
-      return response.data;
+      return data;
     } on DioException catch (e) {
       final error = HomeHttpErrors.fromDio(e);
       throw error;

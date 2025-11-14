@@ -2,15 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 class AppBarWidget extends StatefulWidget implements PreferredSizeWidget {
-  final Widget title;
+  final Widget? title;
   final List<Widget>? actions;
   final Widget? leading;
   final double? height;
   final bool showLeading;
 
   const AppBarWidget({
-    required this.title,
     super.key,
+    this.title,
     this.actions,
     this.leading,
     this.height,

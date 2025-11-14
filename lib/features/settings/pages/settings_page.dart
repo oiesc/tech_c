@@ -7,6 +7,7 @@ import '../../../global/design_system/scaffold_body.dart';
 import '../../../global/l10n/app_localizations.dart';
 import '../../../global/settings/app_settings_store.dart';
 import '../../../global/themes/app_theme_mode.dart';
+import '../../../global/utils/app_utils.dart';
 import '../widgets/language_selector.dart';
 
 /// Settings page for the application
@@ -35,7 +36,7 @@ class SettingsPage extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     const Icon(Icons.error, size: AppConstants.extraLargeIconSize, color: Colors.red),
-                    Text(error.message),
+                    Text(AppFailureMessage.get(error.code)),
                     ElevatedButton(
                       onPressed: () => settingsStore.initialize(),
                       child: Text(AppLocalizations.of(context)!.settingsRetry),

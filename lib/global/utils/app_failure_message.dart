@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 
-import '../app_core/failures/navigation_service.dart';
 import '../l10n/app_localizations.dart';
+import '../services/navigation_service.dart';
+
+typedef L10nTextBuilder = String Function(AppLocalizations l10n);
 
 class AppFailureMessage {
   /// Returns a localized string based on the given error code.
@@ -13,128 +15,58 @@ class AppFailureMessage {
   static String get(String code, {BuildContext? context}) {
     context ??= NavigationService.context;
 
-    if (context == null) {
-      return _getFallback(code);
-    }
+    if (context == null) return code;
 
     final l10n = AppLocalizations.of(context)!;
 
-    final errorKey = _formatErrorKey(code);
+    final key = _formatKey(code);
 
-    switch (errorKey) {
-      case 'localeUpdateFailure':
-        return l10n.errorLocaleUpdateFailure;
-      case 'networkError':
-        return l10n.errorNetworkError;
-      case 'dataParsingError':
-        return l10n.errorDataParsingError;
-      case 'timeout':
-        return l10n.errorTimeout;
-      case 'serverError':
-        return l10n.errorServerError;
-      case 'unauthorized':
-        return l10n.errorUnauthorized;
-      case 'notFound':
-        return l10n.errorNotFound;
-      // Home-specific errors
-      case 'invalidData':
-        return l10n.homeErrorInvalidData;
-      case 'failedRequest':
-        return l10n.homeErrorFailedRequest;
-      case 'unexpectedError':
-        return l10n.homeErrorUnexpectedError;
-      case 'formatError':
-        return l10n.homeErrorFormatError;
-      case 'noData':
-        return l10n.homeErrorNoData;
-      case 'homeNoData':
-        return l10n.homeErrorNoData;
-      case 'homeNullData':
-        return l10n.homeErrorNullData;
-      case 'homeInvalidData':
-        return l10n.homeErrorInvalidData;
-      case 'homeNotFound':
-        return l10n.homeErrorNotFound;
-      case 'homeServerError':
-        return l10n.homeErrorServerError;
-      case 'homeFailedRequest':
-        return l10n.homeErrorFailedRequest;
-      case 'homeUnexpectedError':
-        return l10n.homeErrorUnexpectedError;
-      case 'homeFormatError':
-        return l10n.homeErrorFormatError;
-      // Settings-specific errors
-      case 'settingsInitializationFailure':
-        return l10n.errorSettingsInitializationFailure;
-      case 'settingsLoadFailure':
-        return l10n.errorSettingsLoadFailure;
-      case 'themeUpdateFailure':
-        return l10n.errorThemeUpdateFailure;
-      default:
-        return code; // return the code itself as a fallback message
+    final builder = _localizationMap[key];
+
+    if (builder != null) {
+      return builder(l10n);
     }
+
+    return code;
   }
 
-  /// Returns a fallback error message based on the failure code
-  static String _getFallback(String code) {
-    switch (code) {
-      case 'locale_update_failure':
-        return 'Failed to update language. Please try again.';
-      case 'network_error':
-        return 'Network error occurred. Please check your internet connection.';
-      case 'data_parsing_error':
-        return 'Error processing data. Please try again later.';
-      case 'timeout':
-        return 'Request timeout. Please try again.';
-      case 'server_error':
-        return 'Server error occurred. Please try again later.';
-      case 'unauthorized':
-        return 'Access denied. Please check your credentials.';
-      case 'not_found':
-        return 'Requested resource not found.';
-      // Home-specific errors
-      case 'home_null_data':
-        return 'No data received from the server.';
-      case 'invalidData':
-      case 'home_invalid_data':
-        return 'The data received is invalid.';
-      case 'notFound':
-      case 'home_not_found':
-        return 'The requested resource was not found.';
-      case 'serverError':
-      case 'home_server_error':
-        return 'An internal server error occurred.';
-      case 'failedRequest':
-      case 'home_failed_request':
-        return 'The request failed to complete.';
-      case 'unexpectedError':
-      case 'home_unexpected_error':
-        return 'An unexpected error occurred.';
-      case 'formatError':
-      case 'home_format_error':
-        return 'Data format error occurred.';
-      case 'noData':
-      case 'home_no_data':
-        return 'No data available to display.';
-      // Settings-specific errors
-      case 'settings_initialization_failure':
-        return 'Failed to initialize settings. Please try again.';
-      case 'settings_load_failure':
-        return 'Failed to load settings. Please try again.';
-      case 'theme_update_failure':
-        return 'Failed to update theme. Please try again.';
-      default:
-        return code; // return the code itself as a fallback message
-    }
-  }
+  static final Map<String, L10nTextBuilder> _localizationMap = {
+    'localeUpdateFailure': (l10n) => l10n.errorLocaleUpdateFailure,
+    'networkError': (l10n) => l10n.errorNetworkError,
+    'dataParsingError': (l10n) => l10n.errorDataParsingError,
+    'timeout': (l10n) => l10n.errorTimeout,
+    'serverError': (l10n) => l10n.errorServerError,
+    'unauthorized': (l10n) => l10n.errorUnauthorized,
+    'notFound': (l10n) => l10n.errorNotFound,
 
-  /// Formats an error code by replacing underscores followed by lowercase letters
-  /// with their uppercase equivalents.
+    // HOME
+    'homeInvalidData': (l10n) => l10n.homeErrorInvalidData,
+    'homeFailedRequest': (l10n) => l10n.homeErrorFailedRequest,
+    'homeUnexpectedError': (l10n) => l10n.homeErrorUnexpectedError,
+    'homeFormatError': (l10n) => l10n.homeErrorFormatError,
+    'homeNoData': (l10n) => l10n.homeErrorNoData,
+    'homeNullData': (l10n) => l10n.homeErrorNullData,
+    'homeNotFound': (l10n) => l10n.homeErrorNotFound,
+    'homeServerError': (l10n) => l10n.homeErrorServerError,
+
+    // SETTINGS
+    'settingsInitializationFailure': (l10n) => l10n.errorSettingsInitializationFailure,
+    'settingsLoadFailure': (l10n) => l10n.errorSettingsLoadFailure,
+    'themeUpdateFailure': (l10n) => l10n.errorThemeUpdateFailure,
+  };
+
+  /// Replaces all occurrences of underscores followed by a lowercase letter
+  /// with the uppercase equivalent of that letter.
   ///
-  /// e.g. 'home_null_data' becomes 'homeNullData'
+  /// For example, "home_error" will be replaced with "homeError".
   ///
-  /// This is used to map error codes to their corresponding localized strings.
-  static String _formatErrorKey(String code) {
+  /// This method is used to format error codes into a format that can be
+  /// used to look up localized error messages.
+  ///
+  /// The method uses a regular expression to find all occurrences of
+  /// underscores followed by a lowercase letter, and replaces them with the
+  /// uppercase equivalent of that letter.
+  static String _formatKey(String code) {
     return code.replaceAllMapped(
       RegExp(r'_([a-z])'),
       (match) => match.group(1)!.toUpperCase(),

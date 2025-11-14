@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
 
-import '../../../../global/utils/app_failure_message.dart';
+import '../../../../global/utils/app_utils.dart';
 
 enum HomeHttpErrors {
   nullData,
@@ -34,5 +34,5 @@ enum HomeHttpErrors {
     return HomeHttpErrors.unexpectedError;
   }
 
-  String get code => 'home$name';
+  String get code => 'home${name.capitalize()}';
 }

@@ -10,7 +10,7 @@ class PokemonModel {
   int candyCount;
   String egg;
   double spawnChance;
-  int avgSpawns;
+  double avgSpawns;
   String spawnTime;
   List<double> multipliers;
   List<String> weaknesses;
@@ -48,7 +48,7 @@ class PokemonModel {
       candyCount: json['candy_count'] ?? 0,
       egg: json['egg'],
       spawnChance: (json['spawn_chance'] as num).toDouble(),
-      avgSpawns: json['avg_spawns'],
+      avgSpawns: (json['avg_spawns'] as num).toDouble(),
       spawnTime: json['spawn_time'],
       multipliers: json['multipliers'] != null
           ? List<double>.from((json['multipliers'] as List).map((x) => (x as num).toDouble()))

@@ -1,4 +1,4 @@
-import '../../../../global/utils/app_failure_message.dart';
+import '../../../../global/utils/app_utils.dart';
 
 enum HomeRepositoryErrors {
   formatError,
@@ -8,5 +8,5 @@ enum HomeRepositoryErrors {
     return AppFailureMessage.get(code);
   }
 
-  String get code => 'home$name';
+  String get code => 'home${name.capitalize()}';
 }

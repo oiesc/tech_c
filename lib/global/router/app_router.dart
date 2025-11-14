@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-import '../app_core/failures/navigation_service.dart';
 import '../modules/module_manager.dart';
+import '../services/navigation_service.dart';
 import 'route_paths.dart';
 
 /// Application router configuration using GoRouter

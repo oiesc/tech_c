@@ -37,6 +37,7 @@ class ListViewHeader extends SliverPersistentHeaderDelegate {
         ],
       ),
       child: Row(
+        mainAxisSize: MainAxisSize.min,
         mainAxisAlignment: MainAxisAlignment.center,
         children: List.generate(
           circleDotNumber,

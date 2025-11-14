@@ -12,11 +12,18 @@ class HomeUsecase {
   Future<Either<AppGenericFailure, List<PokemonModel>>> loadPokemonData() async {
     final data = await homeRepository.loadPokemonData();
 
+    const errorCode = 'home_no_data';
+
     return data.fold(
       (failure) => Left(failure),
       (pokemonList) {
         if (pokemonList.isEmpty) {
-          return Left(AppGenericFailure(message: AppFailureMessage.get('home_no_data')));
+          return Left(
+            AppGenericFailure(
+              message: AppFailureMessage.get(errorCode),
+              code: errorCode,
+            ),
+          );
         }
         return Right(pokemonList);
       },

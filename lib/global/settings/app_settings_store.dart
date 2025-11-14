@@ -65,6 +65,7 @@ class AppSettingsStore extends ValueStore<AppSettings> {
         ErrorState<AppSettings>(
           AppGenericFailure(
             message: AppFailureMessage.get('settings_initialization_failure'),
+            code: 'settings_initialization_failure',
             error: error,
           ),
         ),
@@ -89,6 +90,7 @@ class AppSettingsStore extends ValueStore<AppSettings> {
         ErrorState<AppSettings>(
           AppGenericFailure(
             message: AppFailureMessage.get('settings_load_failure'),
+            code: 'settings_load_failure',
             error: error,
           ),
         ),
@@ -116,6 +118,7 @@ class AppSettingsStore extends ValueStore<AppSettings> {
         ErrorState<AppSettings>(
           AppGenericFailure(
             message: AppFailureMessage.get('theme_update_failure'),
+            code: 'theme_update_failure',
             error: error,
           ),
         ),
@@ -143,6 +146,7 @@ class AppSettingsStore extends ValueStore<AppSettings> {
         ErrorState<AppSettings>(
           AppGenericFailure(
             message: AppFailureMessage.get('locale_update_failure'),
+            code: 'locale_update_failure',
             error: error,
           ),
         ),
