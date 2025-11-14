@@ -120,4 +120,52 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get errorThemeUpdateFailure => 'Falha ao atualizar tema. Tente novamente.';
+
+  @override
+  String get pokemonHeight => 'Altura';
+
+  @override
+  String get pokemonWeight => 'Peso';
+
+  @override
+  String get pokemonType => 'Tipo:';
+
+  @override
+  String get pokemonTypes => 'Tipos:';
+
+  @override
+  String get pokemonCandy => 'Doce:';
+
+  @override
+  String get pokemonCandyCount => 'Quantidade de Doces: ';
+
+  @override
+  String get pokemonMultipliers => 'Multiplicadores:';
+
+  @override
+  String get pokemonWeakness => 'Fraqueza:';
+
+  @override
+  String get pokemonWeaknesses => 'Fraquezas:';
+
+  @override
+  String get pokemonInformations => 'Informações';
+
+  @override
+  String get pokemonEgg => 'Ovo:';
+
+  @override
+  String get pokemonSpawnChance => 'Chance de Aparição:';
+
+  @override
+  String get pokemonAvgSpawns => 'Aparições Médias:';
+
+  @override
+  String get pokemonSpawnTime => 'Horário de Aparição:';
+
+  @override
+  String get pokemonPreviousEvolution => 'Evolução Anterior';
+
+  @override
+  String get pokemonNextEvolution => 'Próxima Evolução';
 }

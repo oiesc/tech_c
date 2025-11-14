@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../../global/constants/app_constants.dart';
+import '../../../../global/l10n/app_localizations.dart';
 import '../../domain/models/pokemon_model.dart';
 import 'pokemon/pokemon_property_widget.dart';
 import 'pokemon/pokemon_type_widget.dart';
@@ -53,7 +54,9 @@ class ListViewCardDetail extends StatelessWidget {
                       children: [
                         const _SpacingWidget(),
                         Text(
-                          pokemon.type.length > 1 ? 'Types:' : 'Type:',
+                          pokemon.type.length > 1 
+                              ? AppLocalizations.of(context)!.pokemonTypes
+                              : AppLocalizations.of(context)!.pokemonType,
                           style: Theme.of(context).textTheme.bodyLarge?.copyWith(
                             fontWeight: FontWeight.bold,
                           ),
@@ -65,7 +68,7 @@ class ListViewCardDetail extends StatelessWidget {
                             Expanded(
                               child: PropertyWidget(
                                 showNameFirst: true,
-                                name: 'Height',
+                                name: AppLocalizations.of(context)!.pokemonHeight,
                                 value: pokemon.height,
                                 textAlign: TextAlign.start,
                               ),
@@ -73,7 +76,7 @@ class ListViewCardDetail extends StatelessWidget {
                             Expanded(
                               child: PropertyWidget(
                                 showNameFirst: true,
-                                name: 'Weight',
+                                name: AppLocalizations.of(context)!.pokemonWeight,
                                 value: pokemon.weight,
                                 textAlign: TextAlign.start,
                               ),
@@ -83,7 +86,7 @@ class ListViewCardDetail extends StatelessWidget {
                         const _SpacingWidget(),
                         Text.rich(
                           TextSpan(
-                            text: 'Candy:\n',
+                            text: '${AppLocalizations.of(context)!.pokemonCandy}\n',
                             style: Theme.of(context).textTheme.bodyLarge?.copyWith(
                               fontWeight: FontWeight.bold,
                             ),
@@ -93,7 +96,7 @@ class ListViewCardDetail extends StatelessWidget {
                                 style: Theme.of(context).textTheme.bodyMedium,
                               ),
                               TextSpan(
-                                text: '\nCandy Count: ',
+                                text: '\n${AppLocalizations.of(context)!.pokemonCandyCount}',
                                 style: Theme.of(context).textTheme.bodyLarge?.copyWith(
                                   fontWeight: FontWeight.bold,
                                 ),
@@ -108,7 +111,7 @@ class ListViewCardDetail extends StatelessWidget {
                         _SpacingWidget(),
                         if (pokemon.multipliers.isNotEmpty) ...[
                           Text(
-                            'Multipliers:',
+                            AppLocalizations.of(context)!.pokemonMultipliers,
                             style: Theme.of(context).textTheme.bodyLarge?.copyWith(
                               fontWeight: FontWeight.bold,
                             ),
@@ -117,7 +120,9 @@ class ListViewCardDetail extends StatelessWidget {
                           _SpacingWidget(),
                         ],
                         Text(
-                          pokemon.weaknesses.length > 1 ? 'Weaknesses:' : 'Weakness:',
+                          pokemon.weaknesses.length > 1 
+                              ? AppLocalizations.of(context)!.pokemonWeaknesses
+                              : AppLocalizations.of(context)!.pokemonWeakness,
                           style: Theme.of(context).textTheme.bodyLarge?.copyWith(
                             fontWeight: FontWeight.bold,
                           ),
@@ -125,7 +130,7 @@ class ListViewCardDetail extends StatelessWidget {
                         PokemonTypeWidget(types: pokemon.weaknesses),
                         _SpacingWidget(),
                         Text(
-                          'Informations',
+                          AppLocalizations.of(context)!.pokemonInformations,
                           style: Theme.of(context).textTheme.bodyLarge?.copyWith(
                             fontWeight: FontWeight.bold,
                           ),
@@ -134,7 +139,7 @@ class ListViewCardDetail extends StatelessWidget {
                           TextSpan(
                             children: [
                               TextSpan(
-                                text: 'Egg:',
+                                text: AppLocalizations.of(context)!.pokemonEgg,
                                 style: Theme.of(context).textTheme.bodyLarge?.copyWith(
                                   fontWeight: FontWeight.bold,
                                 ),
@@ -144,7 +149,7 @@ class ListViewCardDetail extends StatelessWidget {
                                 style: Theme.of(context).textTheme.bodyLarge,
                               ),
                               TextSpan(
-                                text: '\nSpawn Chance:',
+                                text: '\n${AppLocalizations.of(context)!.pokemonSpawnChance}',
                                 style: Theme.of(context).textTheme.bodyLarge?.copyWith(
                                   fontWeight: FontWeight.bold,
                                 ),
@@ -154,7 +159,7 @@ class ListViewCardDetail extends StatelessWidget {
                                 style: Theme.of(context).textTheme.bodyLarge,
                               ),
                               TextSpan(
-                                text: '\nAvg Spawns:',
+                                text: '\n${AppLocalizations.of(context)!.pokemonAvgSpawns}',
                                 style: Theme.of(context).textTheme.bodyLarge?.copyWith(
                                   fontWeight: FontWeight.bold,
                                 ),
@@ -164,7 +169,7 @@ class ListViewCardDetail extends StatelessWidget {
                                 style: Theme.of(context).textTheme.bodyLarge,
                               ),
                               TextSpan(
-                                text: '\nSpawn Time:',
+                                text: '\n${AppLocalizations.of(context)!.pokemonSpawnTime}',
                                 style: Theme.of(context).textTheme.bodyLarge?.copyWith(
                                   fontWeight: FontWeight.bold,
                                 ),
@@ -178,12 +183,12 @@ class ListViewCardDetail extends StatelessWidget {
                         ),
                         if (pokemon.prevEvolution.isNotEmpty)
                           _EvolutionWidget(
-                            description: 'Previous Evolution',
+                            description: AppLocalizations.of(context)!.pokemonPreviousEvolution,
                             names: pokemon.prevEvolution.map((e) => e.formattedName).toList(),
                           ),
                         if (pokemon.nextEvolution.isNotEmpty)
                           _EvolutionWidget(
-                            description: 'Next Evolution',
+                            description: AppLocalizations.of(context)!.pokemonNextEvolution,
                             names: pokemon.nextEvolution.map((e) => e.formattedName).toList(),
                           ),
                       ],

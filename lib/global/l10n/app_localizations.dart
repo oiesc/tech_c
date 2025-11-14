@@ -313,6 +313,102 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Failed to update theme. Please try again.'**
   String get errorThemeUpdateFailure;
+
+  /// No description provided for @pokemonHeight.
+  ///
+  /// In en, this message translates to:
+  /// **'Height'**
+  String get pokemonHeight;
+
+  /// No description provided for @pokemonWeight.
+  ///
+  /// In en, this message translates to:
+  /// **'Weight'**
+  String get pokemonWeight;
+
+  /// No description provided for @pokemonType.
+  ///
+  /// In en, this message translates to:
+  /// **'Type:'**
+  String get pokemonType;
+
+  /// No description provided for @pokemonTypes.
+  ///
+  /// In en, this message translates to:
+  /// **'Types:'**
+  String get pokemonTypes;
+
+  /// No description provided for @pokemonCandy.
+  ///
+  /// In en, this message translates to:
+  /// **'Candy:'**
+  String get pokemonCandy;
+
+  /// No description provided for @pokemonCandyCount.
+  ///
+  /// In en, this message translates to:
+  /// **'Candy Count: '**
+  String get pokemonCandyCount;
+
+  /// No description provided for @pokemonMultipliers.
+  ///
+  /// In en, this message translates to:
+  /// **'Multipliers:'**
+  String get pokemonMultipliers;
+
+  /// No description provided for @pokemonWeakness.
+  ///
+  /// In en, this message translates to:
+  /// **'Weakness:'**
+  String get pokemonWeakness;
+
+  /// No description provided for @pokemonWeaknesses.
+  ///
+  /// In en, this message translates to:
+  /// **'Weaknesses:'**
+  String get pokemonWeaknesses;
+
+  /// No description provided for @pokemonInformations.
+  ///
+  /// In en, this message translates to:
+  /// **'Informations'**
+  String get pokemonInformations;
+
+  /// No description provided for @pokemonEgg.
+  ///
+  /// In en, this message translates to:
+  /// **'Egg:'**
+  String get pokemonEgg;
+
+  /// No description provided for @pokemonSpawnChance.
+  ///
+  /// In en, this message translates to:
+  /// **'Spawn Chance:'**
+  String get pokemonSpawnChance;
+
+  /// No description provided for @pokemonAvgSpawns.
+  ///
+  /// In en, this message translates to:
+  /// **'Avg Spawns:'**
+  String get pokemonAvgSpawns;
+
+  /// No description provided for @pokemonSpawnTime.
+  ///
+  /// In en, this message translates to:
+  /// **'Spawn Time:'**
+  String get pokemonSpawnTime;
+
+  /// No description provided for @pokemonPreviousEvolution.
+  ///
+  /// In en, this message translates to:
+  /// **'Previous Evolution'**
+  String get pokemonPreviousEvolution;
+
+  /// No description provided for @pokemonNextEvolution.
+  ///
+  /// In en, this message translates to:
+  /// **'Next Evolution'**
+  String get pokemonNextEvolution;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

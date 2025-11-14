@@ -42,5 +42,22 @@
   
   "errorSettingsInitializationFailure": "Failed to initialize settings. Please try again.",
   "errorSettingsLoadFailure": "Failed to load settings. Please try again.",
-  "errorThemeUpdateFailure": "Failed to update theme. Please try again."
+  "errorThemeUpdateFailure": "Failed to update theme. Please try again.",
+  
+  "pokemonHeight": "Height",
+  "pokemonWeight": "Weight",
+  "pokemonType": "Type:",
+  "pokemonTypes": "Types:",
+  "pokemonCandy": "Candy:",
+  "pokemonCandyCount": "Candy Count: ",
+  "pokemonMultipliers": "Multipliers:",
+  "pokemonWeakness": "Weakness:",
+  "pokemonWeaknesses": "Weaknesses:",
+  "pokemonInformations": "Informations",
+  "pokemonEgg": "Egg:",
+  "pokemonSpawnChance": "Spawn Chance:",
+  "pokemonAvgSpawns": "Avg Spawns:",
+  "pokemonSpawnTime": "Spawn Time:",
+  "pokemonPreviousEvolution": "Previous Evolution",
+  "pokemonNextEvolution": "Next Evolution"
 }

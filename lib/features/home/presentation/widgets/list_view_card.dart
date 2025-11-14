@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../../global/constants/app_constants.dart';
+import '../../../../global/l10n/app_localizations.dart';
 import '../../domain/models/pokemon_model.dart';
 import 'list_view_card_detail.dart';
 import 'pokemon/pokemon_property_widget.dart';
@@ -46,8 +47,8 @@ class ListViewCard extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  PropertyWidget(name: 'Height', value: pokemon.height),
-                  PropertyWidget(name: 'Weight', value: pokemon.weight),
+                  PropertyWidget(name: AppLocalizations.of(context)!.pokemonHeight, value: pokemon.height),
+                  PropertyWidget(name: AppLocalizations.of(context)!.pokemonWeight, value: pokemon.weight),
                 ],
               ),
             ],
