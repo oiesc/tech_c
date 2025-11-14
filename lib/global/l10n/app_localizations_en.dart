@@ -76,6 +76,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get clearFilter => 'Clear Filter';
 
   @override
+  String get searchPokemon => 'Search Pokémon';
+
+  @override
   String get errorLocaleUpdateFailure => 'Failed to update language. Please try again.';
 
   @override

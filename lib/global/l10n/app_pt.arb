@@ -24,6 +24,7 @@
   "homeNoResultsFound": "Nenhum resultado encontrado para \"{query}\"",
   "filterByType": "Filtrar por Tipo",
   "clearFilter": "Limpar Filtro",
+  "searchPokemon": "Buscar Pokémon",
   
   "errorLocaleUpdateFailure": "Falha ao atualizar idioma. Tente novamente.",
   "errorNetworkError": "Erro de rede. Verifique sua conexão com a internet.",

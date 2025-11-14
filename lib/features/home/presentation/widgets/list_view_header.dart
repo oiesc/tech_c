@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../../global/constants/app_constants.dart';
+import '../../../../global/l10n/app_localizations.dart';
 import '../stores/home_store.dart';
 
 class ListViewHeader extends SliverPersistentHeaderDelegate {
@@ -65,7 +66,7 @@ class ListViewHeader extends SliverPersistentHeaderDelegate {
                             : null,
                       ),
                     ],
-                    hintText: 'Search Pokémon',
+                    hintText: AppLocalizations.of(context)!.searchPokemon,
                     elevation: WidgetStateProperty.all(0),
                     onChanged: (value) => homeStore.search(value),
                   ),

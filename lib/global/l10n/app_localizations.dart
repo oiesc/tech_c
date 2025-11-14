@@ -218,6 +218,12 @@ abstract class AppLocalizations {
   /// **'Clear Filter'**
   String get clearFilter;
 
+  /// No description provided for @searchPokemon.
+  ///
+  /// In en, this message translates to:
+  /// **'Search Pokémon'**
+  String get searchPokemon;
+
   /// No description provided for @errorLocaleUpdateFailure.
   ///
   /// In en, this message translates to:

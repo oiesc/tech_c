@@ -76,6 +76,9 @@ class AppLocalizationsPt extends AppLocalizations {
   String get clearFilter => 'Limpar Filtro';
 
   @override
+  String get searchPokemon => 'Buscar Pokémon';
+
+  @override
   String get errorLocaleUpdateFailure => 'Falha ao atualizar idioma. Tente novamente.';
 
   @override
