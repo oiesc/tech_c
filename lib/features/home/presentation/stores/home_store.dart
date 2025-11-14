@@ -10,6 +10,9 @@ class HomeStore extends ValueStore<HomeDataModel> {
 
   final List<PokemonModel> _allPokemons = [];
   final _debouncer = Debouncer();
+  List<String> get allTypes {
+    return _allPokemons.expand((p) => p.type).toSet().toList()..sort();
+  }
 
   Future<void> loadData() async {
     updateState(const LoadingState());
@@ -35,5 +38,18 @@ class HomeStore extends ValueStore<HomeDataModel> {
         updateState(SuccessState(HomeDataModel(allPokemons: _allPokemons, filteredPokemons: filtered)));
       },
     );
+  }
+
+  void filterByType(String type) async {
+    updateState(const LoadingState());
+
+    await Future.delayed(const Duration(milliseconds: 500)); // Simulate delay
+
+    if (type.isEmpty) {
+      updateState(SuccessState(HomeDataModel(allPokemons: _allPokemons, filteredPokemons: _allPokemons)));
+    } else {
+      final filtered = _allPokemons.where((p) => p.type.contains(type)).toList();
+      updateState(SuccessState(HomeDataModel(allPokemons: _allPokemons, filteredPokemons: filtered)));
+    }
   }
 }

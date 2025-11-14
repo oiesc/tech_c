@@ -65,6 +65,17 @@ class AppLocalizationsEn extends AppLocalizations {
   String get homeListTitle => 'Find your favorite Pokemon and explore their details!';
 
   @override
+  String homeNoResultsFound(Object query) {
+    return 'No results found for \"$query\"';
+  }
+
+  @override
+  String get filterByType => 'Filter by Type';
+
+  @override
+  String get clearFilter => 'Clear Filter';
+
+  @override
   String get errorLocaleUpdateFailure => 'Failed to update language. Please try again.';
 
   @override

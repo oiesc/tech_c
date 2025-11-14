@@ -200,6 +200,24 @@ abstract class AppLocalizations {
   /// **'Find your favorite Pokemon and explore their details!'**
   String get homeListTitle;
 
+  /// No description provided for @homeNoResultsFound.
+  ///
+  /// In en, this message translates to:
+  /// **'No results found for \"{query}\"'**
+  String homeNoResultsFound(Object query);
+
+  /// No description provided for @filterByType.
+  ///
+  /// In en, this message translates to:
+  /// **'Filter by Type'**
+  String get filterByType;
+
+  /// No description provided for @clearFilter.
+  ///
+  /// In en, this message translates to:
+  /// **'Clear Filter'**
+  String get clearFilter;
+
   /// No description provided for @errorLocaleUpdateFailure.
   ///
   /// In en, this message translates to:

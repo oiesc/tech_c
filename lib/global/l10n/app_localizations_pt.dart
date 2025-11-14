@@ -65,6 +65,17 @@ class AppLocalizationsPt extends AppLocalizations {
   String get homeListTitle => 'Encontre seu Pokémon favorito e explore seus detalhes!';
 
   @override
+  String homeNoResultsFound(Object query) {
+    return 'Nenhum resultado encontrado para \"$query\"';
+  }
+
+  @override
+  String get filterByType => 'Filtrar por Tipo';
+
+  @override
+  String get clearFilter => 'Limpar Filtro';
+
+  @override
   String get errorLocaleUpdateFailure => 'Falha ao atualizar idioma. Tente novamente.';
 
   @override

@@ -51,6 +51,7 @@ class _HomePageState extends State<HomePage> with HomePageMixin<HomePage> {
                     homeStore: homeStore,
                     controller: searchController,
                     backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+                    onFilterPressed: onFilterPressed,
                   ),
                 ),
                 SliverToBoxAdapter(
@@ -68,7 +69,7 @@ class _HomePageState extends State<HomePage> with HomePageMixin<HomePage> {
                     hasScrollBody: false,
                     child: LoadingWidget(),
                   ),
-                if (state is SuccessState<HomeDataModel>)
+                if (state is SuccessState<HomeDataModel> && state.data.filteredPokemons.isNotEmpty)
                   SliverList.separated(
                     itemCount: state.data.filteredPokemons.length,
                     itemBuilder: (context, index) {
@@ -78,6 +79,17 @@ class _HomePageState extends State<HomePage> with HomePageMixin<HomePage> {
                     separatorBuilder: (_, _) {
                       return const SizedBox(height: AppConstants.mediumSpacing);
                     },
+                  ),
+                if (state is SuccessState<HomeDataModel> && state.data.filteredPokemons.isEmpty)
+                  SliverFillRemaining(
+                    hasScrollBody: false,
+                    child: Center(
+                      child: Text(
+                        AppLocalizations.of(context)!.homeNoResultsFound(searchController.text),
+                        style: Theme.of(context).textTheme.bodyLarge?.copyWith(fontWeight: FontWeight.bold),
+                        textAlign: TextAlign.center,
+                      ),
+                    ),
                   ),
                 if (state is ErrorState)
                   SliverFillRemaining(

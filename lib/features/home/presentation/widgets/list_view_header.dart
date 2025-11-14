@@ -13,10 +13,12 @@ class ListViewHeader extends SliverPersistentHeaderDelegate {
   final HomeStore homeStore;
   final TextEditingController controller;
   final Color? backgroundColor;
+  final VoidCallback onFilterPressed;
 
   ListViewHeader({
     required this.homeStore,
     required this.controller,
+    required this.onFilterPressed,
     this.minExtent = _height,
     this.maxExtent = _height,
     this.backgroundColor,
@@ -43,22 +45,32 @@ class ListViewHeader extends SliverPersistentHeaderDelegate {
         child: ValueListenableBuilder(
           valueListenable: controller,
           builder: (context, value, child) {
-            return SearchBar(
-              controller: controller,
-              trailing: [
+            return Row(
+              children: [
                 IconButton(
-                  icon: const Icon(Icons.clear),
-                  onPressed: controller.text.isNotEmpty
-                      ? () {
-                          controller.clear();
-                          homeStore.search('');
-                        }
-                      : null,
+                  icon: const Icon(Icons.filter_alt),
+                  onPressed: onFilterPressed,
+                ),
+                Expanded(
+                  child: SearchBar(
+                    controller: controller,
+                    trailing: [
+                      IconButton(
+                        icon: const Icon(Icons.clear),
+                        onPressed: controller.text.isNotEmpty
+                            ? () {
+                                controller.clear();
+                                homeStore.search('');
+                              }
+                            : null,
+                      ),
+                    ],
+                    hintText: 'Search Pokémon',
+                    elevation: WidgetStateProperty.all(0),
+                    onChanged: (value) => homeStore.search(value),
+                  ),
                 ),
               ],
-              hintText: 'Search Pokémon',
-              elevation: WidgetStateProperty.all(0),
-              onChanged: (value) => homeStore.search(value),
             );
           },
         ),

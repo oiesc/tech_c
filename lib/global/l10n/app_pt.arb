@@ -21,6 +21,9 @@
   
   "homeWelcome": "Bem-vindo ao Tech_C",
   "homeListTitle": "Encontre seu Pokémon favorito e explore seus detalhes!",
+  "homeNoResultsFound": "Nenhum resultado encontrado para \"{query}\"",
+  "filterByType": "Filtrar por Tipo",
+  "clearFilter": "Limpar Filtro",
   
   "errorLocaleUpdateFailure": "Falha ao atualizar idioma. Tente novamente.",
   "errorNetworkError": "Erro de rede. Verifique sua conexão com a internet.",
