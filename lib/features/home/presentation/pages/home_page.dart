@@ -9,7 +9,7 @@ import '../../../../global/design_system/scaffold_body.dart';
 import '../../../../global/l10n/app_localizations.dart';
 import '../../../../global/router/route_paths.dart';
 import '../../../../global/utils/app_utils.dart';
-import '../../domain/models/pokemon_model.dart';
+import '../../domain/models/home_data_model.dart';
 import '../mixins/home_page_mixin.dart';
 import '../stores/home_store.dart';
 import '../widgets/home_title_widget.dart';
@@ -39,7 +39,7 @@ class _HomePageState extends State<HomePage> with HomePageMixin<HomePage> {
         ],
       ),
       body: ScaffoldBody(
-        child: ValueStoreBuilder<HomeStore, List<PokemonModel>>(
+        child: ValueStoreBuilder<HomeStore, HomeDataModel>(
           store: homeStore,
           builder: (context, state) {
             return CustomScrollView(
@@ -47,7 +47,7 @@ class _HomePageState extends State<HomePage> with HomePageMixin<HomePage> {
               slivers: [
                 SliverPersistentHeader(
                   pinned: true,
-                  delegate: ListViewHeader(),
+                  delegate: ListViewHeader(homeStore: homeStore, controller: searchController),
                 ),
                 SliverToBoxAdapter(
                   child: Padding(
@@ -64,11 +64,11 @@ class _HomePageState extends State<HomePage> with HomePageMixin<HomePage> {
                     hasScrollBody: false,
                     child: LoadingWidget(),
                   ),
-                if (state is SuccessState<List<PokemonModel>>)
+                if (state is SuccessState<HomeDataModel>)
                   SliverList.separated(
-                    itemCount: state.data.length,
+                    itemCount: state.data.filteredPokemons.length,
                     itemBuilder: (context, index) {
-                      final pokemon = state.data[index];
+                      final pokemon = state.data.filteredPokemons[index];
                       return ListViewCard(pokemon: pokemon);
                     },
                     separatorBuilder: (_, _) {

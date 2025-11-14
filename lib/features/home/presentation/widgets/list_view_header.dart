@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 
+import '../../../../global/constants/app_constants.dart';
+import '../stores/home_store.dart';
+
 class ListViewHeader extends SliverPersistentHeaderDelegate {
   static const double _height = 60;
   @override
@@ -7,7 +10,12 @@ class ListViewHeader extends SliverPersistentHeaderDelegate {
   @override
   final double maxExtent;
 
+  final HomeStore homeStore;
+  final TextEditingController controller;
+
   ListViewHeader({
+    required this.homeStore,
+    required this.controller,
     this.minExtent = _height,
     this.maxExtent = _height,
   });
@@ -28,7 +36,31 @@ class ListViewHeader extends SliverPersistentHeaderDelegate {
             ),
         ],
       ),
-      child: SizedBox(),
+      child: Padding(
+        padding: const EdgeInsets.only(bottom: AppConstants.mediumSpacing),
+        child: ValueListenableBuilder(
+          valueListenable: controller,
+          builder: (context, value, child) {
+            return SearchBar(
+              controller: controller,
+              trailing: [
+                IconButton(
+                  icon: const Icon(Icons.clear),
+                  onPressed: controller.text.isNotEmpty
+                      ? () {
+                          controller.clear();
+                          homeStore.search('');
+                        }
+                      : null,
+                ),
+              ],
+              hintText: 'Search Pokémon',
+              elevation: WidgetStateProperty.all(0),
+              onChanged: (value) => homeStore.search(value),
+            );
+          },
+        ),
+      ),
     );
   }
 

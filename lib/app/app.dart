@@ -57,7 +57,12 @@ class App extends StatelessWidget {
             return state.when(
               idle: () => _buildLoadingOverlay(child),
               loading: () => _buildLoadingOverlay(child),
-              success: (settings) => child ?? const SizedBox(),
+              success: (settings) {
+                return GestureDetector(
+                  onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
+                  child: child,
+                );
+              },
               error: (error) => _buildErrorOverlay(context, error),
             );
           },
