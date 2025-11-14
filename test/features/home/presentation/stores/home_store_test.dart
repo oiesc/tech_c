@@ -9,6 +9,7 @@ import 'package:techc/global/app_core/store/app_state.dart';
 
 import '../../../../mocks/home_mocks.mocks.dart';
 import '../../../../mocks/home_test_helpers.dart';
+import '../../../../test_setup.dart';
 
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
@@ -22,9 +23,15 @@ void main() {
   });
 
   setUpAll(() {
+    TestSetup.setupGlobalTestEnvironment();
+
     provideDummy<Either<AppGenericFailure, List<PokemonModel>>>(
       Right(<PokemonModel>[]),
     );
+  });
+
+  tearDownAll(() {
+    TestSetup.tearDownGlobalTestEnvironment();
   });
 
   tearDown(() {
