@@ -11,6 +11,7 @@ import '../../../../global/utils/app_utils.dart';
 import '../../domain/models/pokemon_model.dart';
 import '../mixins/home_page_mixin.dart';
 import '../stores/home_store.dart';
+import '../widgets/list_view_card.dart';
 import '../widgets/list_view_header.dart';
 
 /// Home page of the application
@@ -60,20 +61,15 @@ class _HomePageState extends State<HomePage> with HomePageMixin<HomePage> {
                     getRandomColor: getRandomColor,
                   ),
                 ),
-                SliverList.list(
-                  children: [
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      spacing: AppConstants.largeSpacing,
-                      children: [
-                        Text(
-                          AppLocalizations.of(context)!.homeListTitle,
-                          style: Theme.of(context).textTheme.headlineSmall,
-                          textAlign: TextAlign.center,
-                        ),
-                      ],
+                SliverToBoxAdapter(
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(vertical: AppConstants.mediumSpacing),
+                    child: Text(
+                      AppLocalizations.of(context)!.homeListTitle,
+                      style: Theme.of(context).textTheme.headlineSmall,
+                      textAlign: TextAlign.center,
                     ),
-                  ],
+                  ),
                 ),
                 if (state is LoadingState)
                   SliverFillRemaining(
@@ -81,19 +77,14 @@ class _HomePageState extends State<HomePage> with HomePageMixin<HomePage> {
                     child: Center(child: CircularProgressIndicator(color: getRandomColor())),
                   ),
                 if (state is SuccessState<List<PokemonModel>>)
-                  SliverList.builder(
+                  SliverList.separated(
                     itemCount: state.data.length,
                     itemBuilder: (context, index) {
-                      debugPrint('Building list item at index: $index');
                       final pokemon = state.data[index];
-                      return ListTile(
-                        title: Text(pokemon.name),
-                        subtitle: Text('Type: ${pokemon.type.join(', ')}'),
-                        leading: CircleAvatar(
-                          backgroundColor: getRandomColor(),
-                          child: Text(pokemon.id.toString()),
-                        ),
-                      );
+                      return ListViewCard(pokemon: pokemon);
+                    },
+                    separatorBuilder: (_, _) {
+                      return const SizedBox(height: AppConstants.mediumSpacing);
                     },
                   ),
                 if (state is ErrorState)
