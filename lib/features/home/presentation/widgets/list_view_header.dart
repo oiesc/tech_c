@@ -43,22 +43,18 @@ class ListViewHeader extends SliverPersistentHeaderDelegate {
       ),
       child: Padding(
         padding: const EdgeInsets.only(bottom: AppConstants.mediumSpacing),
-        child: ValueListenableBuilder(
-          valueListenable: controller,
-          builder: (context, value, child) {
-            return Row(
-              children: [
-                IconButton(
-                  icon: const Icon(Icons.filter_alt),
-                  onPressed: onFilterPressed,
-                ),
-                Expanded(
-                  child: SearchBar(
+        child: Row(
+          children: [
+            Expanded(
+              child: ValueListenableBuilder(
+                valueListenable: controller,
+                builder: (_, value, _) {
+                  return SearchBar(
                     controller: controller,
                     trailing: [
                       IconButton(
                         icon: const Icon(Icons.clear),
-                        onPressed: controller.text.isNotEmpty
+                        onPressed: value.text.isNotEmpty
                             ? () {
                                 controller.clear();
                                 homeStore.search('');
@@ -69,11 +65,15 @@ class ListViewHeader extends SliverPersistentHeaderDelegate {
                     hintText: AppLocalizations.of(context)!.searchPokemon,
                     elevation: WidgetStateProperty.all(0),
                     onChanged: (value) => homeStore.search(value),
-                  ),
-                ),
-              ],
-            );
-          },
+                  );
+                },
+              ),
+            ),
+            IconButton(
+              icon: const Icon(Icons.filter_alt),
+              onPressed: onFilterPressed,
+            ),
+          ],
         ),
       ),
     );

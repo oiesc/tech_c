@@ -22,7 +22,15 @@ class HomeStore extends ValueStore<HomeDataModel> {
 
     result.fold((failure) => updateState(ErrorState(failure)), (data) {
       _allPokemons.addAll(data);
-      updateState(SuccessState(HomeDataModel(allPokemons: data, filteredPokemons: data)));
+      updateState(
+        SuccessState(
+          HomeDataModel(
+            allPokemons: data,
+            filteredPokemons: data,
+            hasFilter: false,
+          ),
+        ),
+      );
     });
   }
 
@@ -35,7 +43,15 @@ class HomeStore extends ValueStore<HomeDataModel> {
           return p.name.toLowerCase().contains(q);
         }).toList();
 
-        updateState(SuccessState(HomeDataModel(allPokemons: _allPokemons, filteredPokemons: filtered)));
+        updateState(
+          SuccessState(
+            HomeDataModel(
+              allPokemons: _allPokemons,
+              filteredPokemons: filtered,
+              hasFilter: true,
+            ),
+          ),
+        );
       },
     );
   }
@@ -46,10 +62,26 @@ class HomeStore extends ValueStore<HomeDataModel> {
     await Future.delayed(const Duration(milliseconds: 500)); // Simulate delay
 
     if (type.isEmpty) {
-      updateState(SuccessState(HomeDataModel(allPokemons: _allPokemons, filteredPokemons: _allPokemons)));
+      updateState(
+        SuccessState(
+          HomeDataModel(
+            allPokemons: _allPokemons,
+            filteredPokemons: _allPokemons,
+            hasFilter: false,
+          ),
+        ),
+      );
     } else {
       final filtered = _allPokemons.where((p) => p.type.contains(type)).toList();
-      updateState(SuccessState(HomeDataModel(allPokemons: _allPokemons, filteredPokemons: filtered)));
+      updateState(
+        SuccessState(
+          HomeDataModel(
+            allPokemons: _allPokemons,
+            filteredPokemons: filtered,
+            hasFilter: true,
+          ),
+        ),
+      );
     }
   }
 }

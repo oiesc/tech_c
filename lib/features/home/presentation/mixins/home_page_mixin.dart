@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 
+import '../../../../global/app_core/store/app_state.dart';
+import '../../domain/models/home_data_model.dart';
 import '../stores/home_store.dart';
 import '../widgets/filter_widget.dart';
 
@@ -9,15 +11,26 @@ mixin HomePageMixin<T extends StatefulWidget> on State<T> {
 
   final TextEditingController searchController = TextEditingController();
 
+  bool _homeDataHasFilter = false;
+
+  void Function()? _storeListener;
+
   @override
   void initState() {
     super.initState();
+    _storeListener = homeStore.addListener((state) {
+      final state = homeStore.state;
+      if (state is SuccessState<HomeDataModel>) {
+        _homeDataHasFilter = state.data.hasFilter;
+      }
+    });
     homeStore.loadData();
   }
 
   @override
   void dispose() {
     searchController.dispose();
+    _storeListener?.call();
     _removeOverlay();
     super.dispose();
   }
@@ -35,7 +48,9 @@ mixin HomePageMixin<T extends StatefulWidget> on State<T> {
           child: FilterWidget(
             allTypes: homeStore.allTypes,
             onFilterChanged: (type) {
-              homeStore.filterByType(type);
+              if (type.isNotEmpty || _homeDataHasFilter) {
+                homeStore.filterByType(type);
+              }
               _removeOverlay();
             },
           ),
