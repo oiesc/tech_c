@@ -28,7 +28,7 @@ class ListViewHeader extends SliverPersistentHeaderDelegate {
       width: double.infinity,
       height: _height,
       decoration: BoxDecoration(
-        color: Theme.of(context).scaffoldBackgroundColor,
+        color: backgroundColor,
         boxShadow: [
           if (overlapsContent)
             BoxShadow(
@@ -71,6 +71,5 @@ class ListViewHeader extends SliverPersistentHeaderDelegate {
     return oldDelegate.minExtent != minExtent ||
         oldDelegate.maxExtent != maxExtent ||
         oldDelegate.backgroundColor != backgroundColor;
-    ;
   }
 }
