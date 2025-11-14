@@ -190,7 +190,7 @@ flutter test test/features/home/
 | `logger` | ^2.5.0 | Logging system |
 | `package_info_plus` | ^8.1.1 | Package information |
 
-**📝 Note**: This project uses a **custom State Management system (ValueStore)** instead of BLoC, Riverpod, or Provider, offering greater simplicity and flexibility for direct method calls.
+**📝 Note**: This project uses a **custom State Management system (ValueStore)** instead of BLoC, Cubit, Riverpod, or Provider. While **Cubit** offers similar simplicity, we chose a custom implementation for zero dependencies and complete architectural control, offering greater simplicity and flexibility for direct method calls.
 
 ### Development Dependencies
 
@@ -246,9 +246,9 @@ lib/
 
 ## 🔄 State Management - ValueStore
 
-### Why ValueStore Instead of BLoC?
+### Why ValueStore Instead of BLoC/Cubit?
 
-This project uses a custom state management system called **ValueStore** instead of the popular BLoC pattern. Here are the main reasons:
+This project uses a custom state management system called **ValueStore** instead of the popular BLoC pattern. While **Cubit** offers similar simplicity to our ValueStore approach, we opted for a custom implementation for specific architectural needs. Here are the main reasons:
 
 #### 🎯 **Simplicity and Flexibility**
 
@@ -302,16 +302,29 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
 }
 ```
 
-#### 🚀 **ValueStore Advantages**
+#### 🚀 **ValueStore vs Cubit vs BLoC Comparison**
 
-| Feature | ValueStore | BLoC |
-|---------|------------|------|
-| **Boilerplate** | Minimal | High (events + states) |
-| **Flexibility** | Direct methods | Only through events |
-| **Testability** | Excellent | Excellent |
-| **Performance** | Optimized with ValueNotifier | Optimized with Streams |
-| **Learning Curve** | Low | Medium/High |
-| **Debugging** | Simple | Complex (streams) |
+| Feature | ValueStore | Cubit | BLoC |
+|---------|------------|-------|------|
+| **Boilerplate** | Minimal | Minimal | High (events + states) |
+| **Flexibility** | Direct methods | Direct methods | Only through events |
+| **Testability** | Excellent | Excellent | Excellent |
+| **Performance** | Optimized with ValueNotifier | Optimized with Streams | Optimized with Streams |
+| **Learning Curve** | Low | Low | Medium/High |
+| **Debugging** | Simple | Simple | Complex (streams) |
+| **Custom Architecture** | Fully customizable | BLoC ecosystem dependent | BLoC ecosystem dependent |
+| **Dependencies** | Zero external dependencies | Requires bloc package | Requires bloc package |
+
+**💡 Why Custom Implementation Over Cubit?**
+
+While **Cubit** provides similar simplicity to our ValueStore, we chose a custom implementation because:
+
+1. **🎯 Zero Dependencies**: No need for the `bloc` package dependency
+2. **🔧 Full Control**: Complete control over the state management architecture
+3. **📚 Learning**: Demonstrates deep understanding of state management principles
+4. **🎨 Customization**: Tailored specifically for our application's needs
+5. **🚀 Performance**: Uses Flutter's native ValueNotifier for optimal performance
+6. **🔍 Transparency**: Clear understanding of how state management works under the hood
 
 #### 💡 **Key Features**
 
