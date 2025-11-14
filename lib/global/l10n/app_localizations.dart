@@ -199,6 +199,120 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Find your favorite Pokemon and explore their details!'**
   String get homeListTitle;
+
+  /// No description provided for @errorLocaleUpdateFailure.
+  ///
+  /// In en, this message translates to:
+  /// **'Failed to update language. Please try again.'**
+  String get errorLocaleUpdateFailure;
+
+  /// No description provided for @errorNetworkError.
+  ///
+  /// In en, this message translates to:
+  /// **'Network error occurred. Please check your internet connection.'**
+  String get errorNetworkError;
+
+  /// No description provided for @errorDataParsingError.
+  ///
+  /// In en, this message translates to:
+  /// **'Error processing data. Please try again later.'**
+  String get errorDataParsingError;
+
+  /// No description provided for @errorTimeout.
+  ///
+  /// In en, this message translates to:
+  /// **'Request timeout. Please try again.'**
+  String get errorTimeout;
+
+  /// No description provided for @errorServerError.
+  ///
+  /// In en, this message translates to:
+  /// **'Server error occurred. Please try again later.'**
+  String get errorServerError;
+
+  /// No description provided for @errorUnauthorized.
+  ///
+  /// In en, this message translates to:
+  /// **'Access denied. Please check your credentials.'**
+  String get errorUnauthorized;
+
+  /// No description provided for @errorNotFound.
+  ///
+  /// In en, this message translates to:
+  /// **'Requested resource not found.'**
+  String get errorNotFound;
+
+  /// No description provided for @errorUnknown.
+  ///
+  /// In en, this message translates to:
+  /// **'An unexpected error occurred. Please try again.'**
+  String get errorUnknown;
+
+  /// No description provided for @homeErrorNullData.
+  ///
+  /// In en, this message translates to:
+  /// **'No data received from the server.'**
+  String get homeErrorNullData;
+
+  /// No description provided for @homeErrorInvalidData.
+  ///
+  /// In en, this message translates to:
+  /// **'The data received is invalid.'**
+  String get homeErrorInvalidData;
+
+  /// No description provided for @homeErrorNotFound.
+  ///
+  /// In en, this message translates to:
+  /// **'The requested resource was not found.'**
+  String get homeErrorNotFound;
+
+  /// No description provided for @homeErrorServerError.
+  ///
+  /// In en, this message translates to:
+  /// **'An internal server error occurred.'**
+  String get homeErrorServerError;
+
+  /// No description provided for @homeErrorFailedRequest.
+  ///
+  /// In en, this message translates to:
+  /// **'The request failed to complete.'**
+  String get homeErrorFailedRequest;
+
+  /// No description provided for @homeErrorUnexpectedError.
+  ///
+  /// In en, this message translates to:
+  /// **'An unexpected error occurred.'**
+  String get homeErrorUnexpectedError;
+
+  /// No description provided for @homeErrorFormatError.
+  ///
+  /// In en, this message translates to:
+  /// **'Data format error occurred.'**
+  String get homeErrorFormatError;
+
+  /// No description provided for @homeErrorNoData.
+  ///
+  /// In en, this message translates to:
+  /// **'No data available to display.'**
+  String get homeErrorNoData;
+
+  /// No description provided for @errorSettingsInitializationFailure.
+  ///
+  /// In en, this message translates to:
+  /// **'Failed to initialize settings. Please try again.'**
+  String get errorSettingsInitializationFailure;
+
+  /// No description provided for @errorSettingsLoadFailure.
+  ///
+  /// In en, this message translates to:
+  /// **'Failed to load settings. Please try again.'**
+  String get errorSettingsLoadFailure;
+
+  /// No description provided for @errorThemeUpdateFailure.
+  ///
+  /// In en, this message translates to:
+  /// **'Failed to update theme. Please try again.'**
+  String get errorThemeUpdateFailure;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

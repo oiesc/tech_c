@@ -7,6 +7,7 @@ import '../app_core/store/store_imports.dart';
 import '../services/app_storage/app_storage.dart';
 import '../services/app_storage/app_storage_keys.dart';
 import '../themes/app_theme_mode.dart';
+import '../utils/app_failure_message.dart';
 
 /// Model for app settings
 class AppSettings {
@@ -63,7 +64,7 @@ class AppSettingsStore extends ValueStore<AppSettings> {
       updateState(
         ErrorState<AppSettings>(
           AppGenericFailure(
-            message: 'Failed to initialize settings: $error',
+            message: AppFailureMessage.get('settings_initialization_failure'),
             error: error,
           ),
         ),
@@ -87,7 +88,7 @@ class AppSettingsStore extends ValueStore<AppSettings> {
       updateState(
         ErrorState<AppSettings>(
           AppGenericFailure(
-            message: 'Failed to load settings: $error',
+            message: AppFailureMessage.get('settings_load_failure'),
             error: error,
           ),
         ),
@@ -114,7 +115,7 @@ class AppSettingsStore extends ValueStore<AppSettings> {
       updateState(
         ErrorState<AppSettings>(
           AppGenericFailure(
-            message: 'Failed to update theme mode: $error',
+            message: AppFailureMessage.get('theme_update_failure'),
             error: error,
           ),
         ),
@@ -141,7 +142,7 @@ class AppSettingsStore extends ValueStore<AppSettings> {
       updateState(
         ErrorState<AppSettings>(
           AppGenericFailure(
-            message: 'Failed to update locale: $error',
+            message: AppFailureMessage.get('locale_update_failure'),
             error: error,
           ),
         ),

@@ -28,10 +28,8 @@ class App extends StatelessWidget {
           title: AppConstants.appName,
           debugShowCheckedModeBanner: false,
 
-          // Routing - will handle the error page via router if needed
           routerConfig: AppRouter.router,
 
-          // Localization - use defaults when not loaded
           locale: state.foldSuccess(
             success: (settings) => settings.locale,
             orElse: () => const Locale('en'),
@@ -55,7 +53,6 @@ class App extends StatelessWidget {
             orElse: () => ThemeMode.system,
           ),
 
-          // Show loading or error overlay when needed
           builder: (context, child) {
             return state.when(
               idle: () => _buildLoadingOverlay(child),
@@ -89,28 +86,28 @@ class App extends StatelessWidget {
     return Scaffold(
       body: Center(
         child: Padding(
-          padding: const EdgeInsets.all(24.0),
+          padding: const EdgeInsets.all(AppConstants.largeSpacing),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               const Icon(
                 Icons.error_outline,
-                size: 64,
+                size: AppConstants.hugeIconSize,
                 color: Colors.red,
               ),
-              const SizedBox(height: 24),
+              const SizedBox(height: AppConstants.largeSpacing),
               Text(
                 AppLocalizations.of(context)!.appErrorInitializing,
                 style: Theme.of(context).textTheme.headlineSmall,
                 textAlign: TextAlign.center,
               ),
-              const SizedBox(height: 16),
+              const SizedBox(height: AppConstants.mediumSpacing),
               Text(
                 error.message,
                 style: Theme.of(context).textTheme.bodyMedium,
                 textAlign: TextAlign.center,
               ),
-              const SizedBox(height: 32),
+              const SizedBox(height: AppConstants.extraLargeSpacing),
               ElevatedButton.icon(
                 onPressed: () async {
                   await settingsStore.initialize();

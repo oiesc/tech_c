@@ -35,9 +35,7 @@ class SettingsPage extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     const Icon(Icons.error, size: AppConstants.extraLargeIconSize, color: Colors.red),
-                    Text(
-                      AppLocalizations.of(context)!.settingsErrorLoading(error.message),
-                    ),
+                    Text(error.message),
                     ElevatedButton(
                       onPressed: () => settingsStore.initialize(),
                       child: Text(AppLocalizations.of(context)!.settingsRetry),
@@ -55,6 +53,7 @@ class SettingsPage extends StatelessWidget {
   Widget _buildSettingsContent(BuildContext context, AppSettingsStore settingsStore, AppSettings settings) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
+      spacing: AppConstants.mediumSpacing,
       children: [
         Card(
           child: Padding(
@@ -90,14 +89,12 @@ class SettingsPage extends StatelessWidget {
             ),
           ),
         ),
-        const SizedBox(height: AppConstants.mediumSpacing),
-
         // Language Section
         Card(
           child: Padding(
             padding: const EdgeInsets.all(AppConstants.mediumSpacing),
             child: Column(
-              spacing: AppConstants.smallSpacing,
+              spacing: AppConstants.mediumSpacing,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
@@ -114,8 +111,6 @@ class SettingsPage extends StatelessWidget {
             ),
           ),
         ),
-        const SizedBox(height: AppConstants.mediumSpacing),
-
         // App Info Section
         Card(
           child: Padding(

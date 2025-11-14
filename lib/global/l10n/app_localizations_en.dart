@@ -63,4 +63,61 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get homeListTitle => 'Find your favorite Pokemon and explore their details!';
+
+  @override
+  String get errorLocaleUpdateFailure => 'Failed to update language. Please try again.';
+
+  @override
+  String get errorNetworkError => 'Network error occurred. Please check your internet connection.';
+
+  @override
+  String get errorDataParsingError => 'Error processing data. Please try again later.';
+
+  @override
+  String get errorTimeout => 'Request timeout. Please try again.';
+
+  @override
+  String get errorServerError => 'Server error occurred. Please try again later.';
+
+  @override
+  String get errorUnauthorized => 'Access denied. Please check your credentials.';
+
+  @override
+  String get errorNotFound => 'Requested resource not found.';
+
+  @override
+  String get errorUnknown => 'An unexpected error occurred. Please try again.';
+
+  @override
+  String get homeErrorNullData => 'No data received from the server.';
+
+  @override
+  String get homeErrorInvalidData => 'The data received is invalid.';
+
+  @override
+  String get homeErrorNotFound => 'The requested resource was not found.';
+
+  @override
+  String get homeErrorServerError => 'An internal server error occurred.';
+
+  @override
+  String get homeErrorFailedRequest => 'The request failed to complete.';
+
+  @override
+  String get homeErrorUnexpectedError => 'An unexpected error occurred.';
+
+  @override
+  String get homeErrorFormatError => 'Data format error occurred.';
+
+  @override
+  String get homeErrorNoData => 'No data available to display.';
+
+  @override
+  String get errorSettingsInitializationFailure => 'Failed to initialize settings. Please try again.';
+
+  @override
+  String get errorSettingsLoadFailure => 'Failed to load settings. Please try again.';
+
+  @override
+  String get errorThemeUpdateFailure => 'Failed to update theme. Please try again.';
 }

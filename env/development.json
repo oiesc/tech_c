@@ -1,6 +1,6 @@
 {
   "ENVIRONMENT": "development",
-  "API_BASE_URL": "https://raw.githubusercontent.com/Biuni/PokemonGo-Pokedex/master/pokedex.json",
+  "API_BASE_URL": "https://raw.githubusercontent.com",
   "API_KEY": "dev_api_key_here",
   "DEBUG_MODE": "true",
   "ANALYTICS_ENABLED": "false",

@@ -20,5 +20,27 @@
   "settingsRetry": "Tentar Novamente",
   
   "homeWelcome": "Bem-vindo ao Tech_C",
-  "homeListTitle": "Encontre seu Pokémon favorito e explore seus detalhes!"
+  "homeListTitle": "Encontre seu Pokémon favorito e explore seus detalhes!",
+  
+  "errorLocaleUpdateFailure": "Falha ao atualizar idioma. Tente novamente.",
+  "errorNetworkError": "Erro de rede. Verifique sua conexão com a internet.",
+  "errorDataParsingError": "Erro ao processar dados. Tente novamente mais tarde.",
+  "errorTimeout": "Tempo limite da requisição. Tente novamente.",
+  "errorServerError": "Erro no servidor. Tente novamente mais tarde.",
+  "errorUnauthorized": "Acesso negado. Verifique suas credenciais.",
+  "errorNotFound": "Recurso solicitado não encontrado.",
+  "errorUnknown": "Ocorreu um erro inesperado. Tente novamente.",
+  
+  "homeErrorNullData": "Nenhum dado foi recebido do servidor.",
+  "homeErrorInvalidData": "Os dados recebidos são inválidos.",
+  "homeErrorNotFound": "O recurso solicitado não foi encontrado.",
+  "homeErrorServerError": "Ocorreu um erro interno no servidor.",
+  "homeErrorFailedRequest": "A solicitação falhou ao ser concluída.",
+  "homeErrorUnexpectedError": "Ocorreu um erro inesperado.",
+  "homeErrorFormatError": "Ocorreu um erro de formato nos dados.",
+  "homeErrorNoData": "Nenhum dado disponível para exibir.",
+  
+  "errorSettingsInitializationFailure": "Falha ao inicializar configurações. Tente novamente.",
+  "errorSettingsLoadFailure": "Falha ao carregar configurações. Tente novamente.",
+  "errorThemeUpdateFailure": "Falha ao atualizar tema. Tente novamente."
 }
