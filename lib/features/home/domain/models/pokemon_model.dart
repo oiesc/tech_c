@@ -1,4 +1,3 @@
-
 class PokemonModel {
   int id;
   String number;
@@ -15,7 +14,8 @@ class PokemonModel {
   String spawnTime;
   List<double> multipliers;
   List<String> weaknesses;
-  List<NextEvolutionModel> nextEvolution;
+  List<EvolutionModel> prevEvolution;
+  List<EvolutionModel> nextEvolution;
 
   PokemonModel({
     required this.id,
@@ -33,6 +33,7 @@ class PokemonModel {
     required this.spawnTime,
     required this.multipliers,
     required this.weaknesses,
+    required this.prevEvolution,
     required this.nextEvolution,
   });
 
@@ -55,24 +56,29 @@ class PokemonModel {
           ? List<double>.from((json['multipliers'] as List).map((x) => (x as num).toDouble()))
           : [],
       weaknesses: List<String>.from(json['weaknesses']),
+      prevEvolution: json['prev_evolution'] != null
+          ? List<EvolutionModel>.from((json['prev_evolution'] as List).map((x) => EvolutionModel.fromJson(x)))
+          : [],
       nextEvolution: json['next_evolution'] != null
-          ? List<NextEvolutionModel>.from((json['next_evolution'] as List).map((x) => NextEvolutionModel.fromJson(x)))
+          ? List<EvolutionModel>.from((json['next_evolution'] as List).map((x) => EvolutionModel.fromJson(x)))
           : [],
     );
   }
 }
 
-class NextEvolutionModel {
+class EvolutionModel {
   String number;
   String name;
 
-  NextEvolutionModel({
+  String get formattedName => '#$number $name';
+
+  EvolutionModel({
     required this.number,
     required this.name,
   });
 
-  factory NextEvolutionModel.fromJson(Map<String, dynamic> json) {
-    return NextEvolutionModel(
+  factory EvolutionModel.fromJson(Map<String, dynamic> json) {
+    return EvolutionModel(
       number: json['num'] as String? ?? '',
       name: json['name'] as String? ?? '',
     );

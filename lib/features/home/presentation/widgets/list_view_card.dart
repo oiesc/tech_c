@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 
 import '../../../../global/constants/app_constants.dart';
 import '../../domain/models/pokemon_model.dart';
-import '../../utils/home_utils.dart';
+import 'list_view_card_detail.dart';
+import 'pokemon/pokemon_property_widget.dart';
+import 'pokemon/pokemon_type_widget.dart';
 
 class ListViewCard extends StatelessWidget {
   final PokemonModel pokemon;
@@ -11,71 +13,47 @@ class ListViewCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      child: Padding(
-        padding: const EdgeInsets.all(AppConstants.mediumSpacing),
-        child: Column(
-          spacing: AppConstants.smallSpacing,
-          children: [
-            _HeaderWidget(pokemon: pokemon),
-            Image.network(
-              pokemon.img,
-              height: 150,
-              width: 150,
-              fit: BoxFit.contain,
+      clipBehavior: Clip.antiAlias,
+      child: InkWell(
+        onTap: () {
+          showModalBottomSheet(
+            isScrollControlled: true,
+            constraints: BoxConstraints(
+              maxHeight: MediaQuery.of(context).size.height * 0.8,
             ),
-            Text(
-              pokemon.name,
-              style: Theme.of(context).textTheme.headlineMedium?.copyWith(
-                fontWeight: FontWeight.bold,
+            context: context,
+            builder: (context) => ListViewCardDetail(pokemon: pokemon),
+          );
+        },
+        child: Padding(
+          padding: const EdgeInsets.all(AppConstants.mediumSpacing),
+          child: Column(
+            spacing: AppConstants.smallSpacing,
+            children: [
+              _HeaderWidget(pokemon: pokemon),
+              Image.network(
+                pokemon.img,
+                height: 150,
+                width: 150,
+                fit: BoxFit.contain,
               ),
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                _PropertyWidget(
-                  name: 'Height',
-                  value: pokemon.height,
+              Text(
+                pokemon.name,
+                style: Theme.of(context).textTheme.headlineMedium?.copyWith(
+                  fontWeight: FontWeight.bold,
                 ),
-                _PropertyWidget(
-                  name: 'Weight',
-                  value: pokemon.weight,
-                ),
-              ],
-            ),
-          ],
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  PropertyWidget(name: 'Height', value: pokemon.height),
+                  PropertyWidget(name: 'Weight', value: pokemon.weight),
+                ],
+              ),
+            ],
+          ),
         ),
       ),
-    );
-  }
-}
-
-class _PropertyWidget extends StatelessWidget {
-  const _PropertyWidget({
-    required this.name,
-    required this.value,
-  });
-
-  final String name;
-  final String value;
-
-  @override
-  Widget build(BuildContext context) {
-    return Text.rich(
-      TextSpan(
-        children: [
-          TextSpan(
-            text: '$value\n',
-            style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-          TextSpan(
-            text: name,
-            style: Theme.of(context).textTheme.bodyMedium,
-          ),
-        ],
-      ),
-      textAlign: TextAlign.center,
     );
   }
 }
@@ -97,19 +75,7 @@ class _HeaderWidget extends StatelessWidget {
           ),
         ),
         Spacer(),
-        ...pokemon.type.map(
-          (type) => Chip(
-            side: BorderSide.none,
-            backgroundColor: HomeUtils.getChipColor(type),
-            label: Text(
-              type,
-              style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                color: HomeUtils.getChipTextColor(type),
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-          ),
-        ),
+        PokemonTypeWidget(types: pokemon.type),
       ],
     );
   }
