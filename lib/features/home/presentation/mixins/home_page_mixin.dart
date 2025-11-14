@@ -17,6 +17,10 @@ mixin HomePageMixin<T extends StatefulWidget> on State<T> {
 
   final TextEditingController searchController = TextEditingController();
 
+  final ScrollController scrollController = ScrollController();
+
+  bool showScrollToTopButton = false;
+
   bool _homeDataHasFilter = false;
 
   void Function()? _storeListener;
@@ -31,12 +35,15 @@ mixin HomePageMixin<T extends StatefulWidget> on State<T> {
         _homeDataHasFilter = state.data.hasFilter;
       }
     });
+    scrollController.addListener(_canShowScrollToTopButtonListener);
     homeStore.loadData();
   }
 
   @override
   void dispose() {
     searchController.dispose();
+    scrollController.removeListener(_canShowScrollToTopButtonListener);
+    scrollController.dispose();
     _storeListener?.call();
     _removeOverlay();
     super.dispose();
@@ -98,5 +105,15 @@ mixin HomePageMixin<T extends StatefulWidget> on State<T> {
       context: context,
       builder: (context) => ListViewCardDetail(pokemon: pokemon),
     );
+  }
+
+  void _canShowScrollToTopButtonListener() {
+    final shouldShow = scrollController.offset > 500;
+    if (shouldShow != showScrollToTopButton) {
+      setState(() {
+        if (!mounted) return;
+        showScrollToTopButton = shouldShow;
+      });
+    }
   }
 }

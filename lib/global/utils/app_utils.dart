@@ -40,4 +40,12 @@ class AppUtils {
     final random = Random.secure();
     return List.generate(length, (index) => chars[random.nextInt(chars.length)]).join();
   }
+
+  static void scrollToTop(ScrollController controller) {
+    controller.animateTo(
+      0.0,
+      duration: const Duration(milliseconds: 500),
+      curve: Curves.easeInOut,
+    );
+  }
 }
