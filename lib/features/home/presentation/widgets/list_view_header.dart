@@ -12,12 +12,14 @@ class ListViewHeader extends SliverPersistentHeaderDelegate {
 
   final HomeStore homeStore;
   final TextEditingController controller;
+  final Color? backgroundColor;
 
   ListViewHeader({
     required this.homeStore,
     required this.controller,
     this.minExtent = _height,
     this.maxExtent = _height,
+    this.backgroundColor,
   });
 
   @override
@@ -66,6 +68,9 @@ class ListViewHeader extends SliverPersistentHeaderDelegate {
 
   @override
   bool shouldRebuild(covariant ListViewHeader oldDelegate) {
-    return oldDelegate.minExtent != minExtent || oldDelegate.maxExtent != maxExtent;
+    return oldDelegate.minExtent != minExtent ||
+        oldDelegate.maxExtent != maxExtent ||
+        oldDelegate.backgroundColor != backgroundColor;
+    ;
   }
 }

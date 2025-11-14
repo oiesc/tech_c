@@ -47,7 +47,11 @@ class _HomePageState extends State<HomePage> with HomePageMixin<HomePage> {
               slivers: [
                 SliverPersistentHeader(
                   pinned: true,
-                  delegate: ListViewHeader(homeStore: homeStore, controller: searchController),
+                  delegate: ListViewHeader(
+                    homeStore: homeStore,
+                    controller: searchController,
+                    backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+                  ),
                 ),
                 SliverToBoxAdapter(
                   child: Padding(
