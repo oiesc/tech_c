@@ -54,7 +54,7 @@ class ListViewCardDetail extends StatelessWidget {
                       children: [
                         const _SpacingWidget(),
                         Text(
-                          pokemon.type.length > 1 
+                          pokemon.type.length > 1
                               ? AppLocalizations.of(context)!.pokemonTypes
                               : AppLocalizations.of(context)!.pokemonType,
                           style: Theme.of(context).textTheme.bodyLarge?.copyWith(
@@ -86,7 +86,7 @@ class ListViewCardDetail extends StatelessWidget {
                         const _SpacingWidget(),
                         Text.rich(
                           TextSpan(
-                            text: '${AppLocalizations.of(context)!.pokemonCandy}\n',
+                            text: '${AppLocalizations.of(context)!.pokemonCandy} ',
                             style: Theme.of(context).textTheme.bodyLarge?.copyWith(
                               fontWeight: FontWeight.bold,
                             ),
@@ -120,7 +120,7 @@ class ListViewCardDetail extends StatelessWidget {
                           _SpacingWidget(),
                         ],
                         Text(
-                          pokemon.weaknesses.length > 1 
+                          pokemon.weaknesses.length > 1
                               ? AppLocalizations.of(context)!.pokemonWeaknesses
                               : AppLocalizations.of(context)!.pokemonWeakness,
                           style: Theme.of(context).textTheme.bodyLarge?.copyWith(
