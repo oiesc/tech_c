@@ -19,7 +19,8 @@ mixin HomePageMixin<T extends StatefulWidget> on State<T> {
 
   final ScrollController scrollController = ScrollController();
 
-  bool showScrollToTopButton = false;
+  bool _showScrollToTopButton = false;
+  bool get showScrollToTopButton => _showScrollToTopButton;
 
   bool _homeDataHasFilter = false;
 
@@ -112,7 +113,7 @@ mixin HomePageMixin<T extends StatefulWidget> on State<T> {
     if (shouldShow != showScrollToTopButton) {
       setState(() {
         if (!mounted) return;
-        showScrollToTopButton = shouldShow;
+        _showScrollToTopButton = shouldShow;
       });
     }
   }
