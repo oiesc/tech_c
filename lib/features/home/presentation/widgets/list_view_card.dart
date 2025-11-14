@@ -75,6 +75,7 @@ class _PropertyWidget extends StatelessWidget {
           ),
         ],
       ),
+      textAlign: TextAlign.center,
     );
   }
 }

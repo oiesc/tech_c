@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 import '../../../../global/app_core/app_core.dart';
 import '../../../../global/constants/app_constants.dart';
 import '../../../../global/design_system/app_bar_widget.dart';
+import '../../../../global/design_system/loading_widget.dart';
 import '../../../../global/design_system/scaffold_body.dart';
 import '../../../../global/l10n/app_localizations.dart';
 import '../../../../global/router/route_paths.dart';
@@ -11,6 +12,7 @@ import '../../../../global/utils/app_utils.dart';
 import '../../domain/models/pokemon_model.dart';
 import '../mixins/home_page_mixin.dart';
 import '../stores/home_store.dart';
+import '../widgets/home_title_widget.dart';
 import '../widgets/list_view_card.dart';
 import '../widgets/list_view_header.dart';
 
@@ -28,17 +30,7 @@ class _HomePageState extends State<HomePage> with HomePageMixin<HomePage> {
     return Scaffold(
       appBar: AppBarWidget(
         showLeading: false,
-        title: AnimatedDefaultTextStyle(
-          style: Theme.of(context).textTheme.headlineSmall!.copyWith(
-            color: getRandomColor(),
-            fontWeight: FontWeight.bold,
-          ),
-          duration: animationDuration,
-          child: Text(
-            AppLocalizations.of(context)!.homeWelcome,
-            textAlign: TextAlign.center,
-          ),
-        ),
+        title: const HomeTitleWidget(),
         actions: [
           IconButton(
             icon: const Icon(Icons.settings),
@@ -55,11 +47,7 @@ class _HomePageState extends State<HomePage> with HomePageMixin<HomePage> {
               slivers: [
                 SliverPersistentHeader(
                   pinned: true,
-                  delegate: ListViewHeader(
-                    circleDotNumber: circleDotNumber,
-                    paintedCircleDotIndex: paintedCircleDotIndex,
-                    getRandomColor: getRandomColor,
-                  ),
+                  delegate: ListViewHeader(),
                 ),
                 SliverToBoxAdapter(
                   child: Padding(
@@ -74,7 +62,7 @@ class _HomePageState extends State<HomePage> with HomePageMixin<HomePage> {
                 if (state is LoadingState)
                   SliverFillRemaining(
                     hasScrollBody: false,
-                    child: Center(child: CircularProgressIndicator(color: getRandomColor())),
+                    child: LoadingWidget(),
                   ),
                 if (state is SuccessState<List<PokemonModel>>)
                   SliverList.separated(

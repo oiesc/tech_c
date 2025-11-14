@@ -8,6 +8,7 @@ class HomeStore extends ValueStore<List<PokemonModel>> {
 
   Future<void> loadData() async {
     updateState(const LoadingState());
+    await Future.delayed(const Duration(seconds: 3)); // Simulate delay
     final result = await _homeUsecase.loadPokemonData();
 
     result.fold(
