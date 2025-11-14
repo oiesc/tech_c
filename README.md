@@ -16,11 +16,13 @@ A Flutter application that displays a collection of Pokémon with their details,
 
 *Screenshots will be added here to showcase the app's interface and features.*
 
-<!-- Add your screenshots here when ready:
-![Home Screen](screenshots/home_screen.png)
-![Pokémon Details](screenshots/pokemon_details.png)
-![Settings](screenshots/settings.png)
--->
+<img width="350" alt="Screenshot_1763105745" src="https://github.com/user-attachments/assets/26adca64-c093-4d29-a27d-70a67b57335f" />
+<img width="350" alt="Screenshot_1763105562" src="https://github.com/user-attachments/assets/480c2482-f60f-40e3-b68b-b25e8c8651d6" />
+<img width="350" alt="Screenshot_1763105559" src="https://github.com/user-attachments/assets/6701aa8e-17b7-46b4-8ae0-8dfcb5227cf5" />
+<img width="350" alt="Screenshot_1763105549" src="https://github.com/user-attachments/assets/cf808599-6e45-4d05-b3f1-d6e87efaa470" />
+<img width="350" alt="Screenshot_1763105547" src="https://github.com/user-attachments/assets/c35dd3d5-450e-4104-af6e-7b4ebf7bcc4e" />
+<img width="350" alt="Screenshot_1763105543" src="https://github.com/user-attachments/assets/ea72bb94-a3c9-4541-9f9d-31fef1f409d1" />
+
 
 ## 🚀 How to Install
 
