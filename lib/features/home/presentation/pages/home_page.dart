@@ -74,7 +74,7 @@ class _HomePageState extends State<HomePage> with HomePageMixin<HomePage> {
                     itemCount: state.data.filteredPokemons.length,
                     itemBuilder: (context, index) {
                       final pokemon = state.data.filteredPokemons[index];
-                      return ListViewCard(pokemon: pokemon);
+                      return ListViewCard(pokemon: pokemon, openItemDetails: openItemDetails);
                     },
                     separatorBuilder: (_, _) {
                       return const SizedBox(height: AppConstants.mediumSpacing);

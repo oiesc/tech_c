@@ -53,3 +53,26 @@ env/*-local.json
 
 # IDE specific files
 .vscode/settings.json
+
+# Google Services Configuration
+android/app/google-services.json
+ios/Runner/GoogleService-Info.plist
+
+# iOS specific
+ios/Pods/
+ios/Podfile.lock
+ios/.symlinks/
+ios/Runner.xcworkspace/xcuserdata/
+ios/Runner.xcodeproj/xcuserdata/
+ios/Runner.xcodeproj/project.xcworkspace/xcuserdata/
+ios/.generated/
+ios/Flutter/flutter_export_environment.sh
+ios/Runner/GeneratedPluginRegistrant.*
+*.pbxuser
+*.mode1v3
+*.mode2v3
+*.perspectivev3
+*.xcuserstate
+*.xcscmblueprint
+*.xccheckout
+.DS_Store

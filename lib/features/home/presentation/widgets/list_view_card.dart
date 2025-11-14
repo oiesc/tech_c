@@ -3,29 +3,20 @@ import 'package:flutter/material.dart';
 import '../../../../global/constants/app_constants.dart';
 import '../../../../global/l10n/app_localizations.dart';
 import '../../domain/models/pokemon_model.dart';
-import 'list_view_card_detail.dart';
 import 'pokemon/pokemon_property_widget.dart';
 import 'pokemon/pokemon_type_widget.dart';
 
 class ListViewCard extends StatelessWidget {
   final PokemonModel pokemon;
-  const ListViewCard({required this.pokemon, super.key});
+  final Function(PokemonModel pokemon) openItemDetails;
+  const ListViewCard({required this.pokemon, required this.openItemDetails, super.key});
 
   @override
   Widget build(BuildContext context) {
     return Card(
       clipBehavior: Clip.antiAlias,
       child: InkWell(
-        onTap: () {
-          showModalBottomSheet(
-            isScrollControlled: true,
-            constraints: BoxConstraints(
-              maxHeight: MediaQuery.of(context).size.height * 0.8,
-            ),
-            context: context,
-            builder: (context) => ListViewCardDetail(pokemon: pokemon),
-          );
-        },
+        onTap: () => openItemDetails(pokemon),
         child: Padding(
           padding: const EdgeInsets.all(AppConstants.mediumSpacing),
           child: Column(

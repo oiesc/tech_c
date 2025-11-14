@@ -2,9 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 
 import '../../../../global/app_core/store/app_state.dart';
+import '../../../../global/services/analytics_service.dart';
+import '../../../../global/services/app_storage/app_storage.dart';
+import '../../../../global/services/app_storage/app_storage_keys.dart';
+import '../../../../global/utils/app_utils.dart';
 import '../../domain/models/home_data_model.dart';
+import '../../domain/models/pokemon_model.dart';
 import '../stores/home_store.dart';
 import '../widgets/filter_widget.dart';
+import '../widgets/list_view_card_detail.dart';
 
 mixin HomePageMixin<T extends StatefulWidget> on State<T> {
   HomeStore get homeStore => GetIt.I<HomeStore>();
@@ -18,6 +24,7 @@ mixin HomePageMixin<T extends StatefulWidget> on State<T> {
   @override
   void initState() {
     super.initState();
+    _setUserAnalytics();
     _storeListener = homeStore.addListener((state) {
       final state = homeStore.state;
       if (state is SuccessState<HomeDataModel>) {
@@ -49,6 +56,7 @@ mixin HomePageMixin<T extends StatefulWidget> on State<T> {
             allTypes: homeStore.allTypes,
             onFilterChanged: (type) {
               if (type.isNotEmpty || _homeDataHasFilter) {
+                AnalyticsService.logEvent(name: 'filter_by_type', parameters: {'type': type});
                 homeStore.filterByType(type);
               }
               _removeOverlay();
@@ -64,5 +72,30 @@ mixin HomePageMixin<T extends StatefulWidget> on State<T> {
   void _removeOverlay() {
     _overlayEntry?.remove();
     _overlayEntry = null;
+  }
+
+  void _setUserAnalytics() {
+    final prefs = GetIt.I<AppStorage>();
+    String? userId = prefs.getString(AppStorageKeys.userId);
+
+    if (userId.isNullOrEmpty()) {
+      userId = AppUtils.generateRandomId();
+      prefs.setString(AppStorageKeys.userId, userId);
+    }
+
+    AnalyticsService.setUserId(userId!);
+    AnalyticsService.setUserProperty(name: 'is_logged', value: 'false');
+  }
+
+  void openItemDetails(PokemonModel pokemon) {
+    AnalyticsService.logSelectContent(contentType: 'pokemon', itemId: '${pokemon.id}-${pokemon.name}');
+    showModalBottomSheet(
+      isScrollControlled: true,
+      constraints: BoxConstraints(
+        maxHeight: MediaQuery.of(context).size.height * 0.8,
+      ),
+      context: context,
+      builder: (context) => ListViewCardDetail(pokemon: pokemon),
+    );
   }
 }

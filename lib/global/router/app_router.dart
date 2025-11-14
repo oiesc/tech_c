@@ -3,6 +3,7 @@ import 'package:go_router/go_router.dart';
 
 import '../modules/module_manager.dart';
 import '../services/navigation_service.dart';
+import 'analytics_navigator_observer.dart';
 import 'route_paths.dart';
 
 /// Application router configuration using GoRouter
@@ -19,8 +20,8 @@ class AppRouter {
       debugLogDiagnostics: true,
       routes: [
         ...moduleManager.getAllRoutes(),
-        // Add global routes here if needed
       ],
+      observers: [AnalyticsNavigatorObserver()],
       errorBuilder: (context, state) => Scaffold(
         appBar: AppBar(
           title: const Text('Page Not Found'),
