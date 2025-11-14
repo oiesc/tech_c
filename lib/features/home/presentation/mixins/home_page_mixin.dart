@@ -90,6 +90,7 @@ mixin HomePageMixin<T extends StatefulWidget> on State<T> {
   void openItemDetails(PokemonModel pokemon) {
     AnalyticsService.logSelectContent(contentType: 'pokemon', itemId: '${pokemon.id}-${pokemon.name}');
     showModalBottomSheet(
+      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       isScrollControlled: true,
       constraints: BoxConstraints(
         maxHeight: MediaQuery.of(context).size.height * 0.8,
