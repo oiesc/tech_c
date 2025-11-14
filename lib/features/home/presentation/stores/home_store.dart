@@ -8,16 +8,17 @@ class HomeStore extends ValueStore<HomeDataModel> {
   final HomeUsecase _homeUsecase;
   HomeStore(this._homeUsecase) : super(const IdleState());
 
-  List<PokemonModel> _allPokemons = [];
+  final List<PokemonModel> _allPokemons = [];
   final _debouncer = Debouncer();
 
   Future<void> loadData() async {
     updateState(const LoadingState());
+    _allPokemons.clear();
     await Future.delayed(const Duration(seconds: 3)); // Simulate delay
     final result = await _homeUsecase.loadPokemonData();
 
     result.fold((failure) => updateState(ErrorState(failure)), (data) {
-      _allPokemons = data;
+      _allPokemons.addAll(data);
       updateState(SuccessState(HomeDataModel(allPokemons: data, filteredPokemons: data)));
     });
   }
