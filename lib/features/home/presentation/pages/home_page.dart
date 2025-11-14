@@ -50,67 +50,72 @@ class _HomePageState extends State<HomePage> with HomePageMixin<HomePage> {
         child: ValueStoreBuilder<HomeStore, HomeDataModel>(
           store: homeStore,
           builder: (context, state) {
-            return CustomScrollView(
-              controller: scrollController,
-              physics: const BouncingScrollPhysics(),
-              slivers: [
-                SliverPersistentHeader(
-                  pinned: true,
-                  delegate: ListViewHeader(
-                    homeStore: homeStore,
-                    controller: searchController,
-                    backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-                    onFilterPressed: onFilterPressed,
-                  ),
+            return RefreshIndicator(
+              onRefresh: () async => onRefresh(),
+              child: CustomScrollView(
+                controller: scrollController,
+                physics: const BouncingScrollPhysics().applyTo(
+                  const AlwaysScrollableScrollPhysics(),
                 ),
-                SliverToBoxAdapter(
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(vertical: AppConstants.mediumSpacing),
-                    child: Text(
-                      AppLocalizations.of(context)!.homeListTitle,
-                      style: Theme.of(context).textTheme.headlineSmall,
-                      textAlign: TextAlign.center,
+                slivers: [
+                  SliverPersistentHeader(
+                    pinned: true,
+                    delegate: ListViewHeader(
+                      homeStore: homeStore,
+                      controller: searchController,
+                      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+                      onFilterPressed: onFilterPressed,
                     ),
                   ),
-                ),
-                if (state is LoadingState)
-                  SliverFillRemaining(
-                    hasScrollBody: false,
-                    child: LoadingWidget(),
-                  ),
-                if (state is SuccessState<HomeDataModel> && state.data.filteredPokemons.isNotEmpty)
-                  SliverList.separated(
-                    itemCount: state.data.filteredPokemons.length,
-                    itemBuilder: (context, index) {
-                      final pokemon = state.data.filteredPokemons[index];
-                      return ListViewCard(pokemon: pokemon, openItemDetails: openItemDetails);
-                    },
-                    separatorBuilder: (_, _) {
-                      return const SizedBox(height: AppConstants.mediumSpacing);
-                    },
-                  ),
-                if (state is SuccessState<HomeDataModel> && state.data.filteredPokemons.isEmpty)
-                  SliverFillRemaining(
-                    hasScrollBody: false,
-                    child: Center(
+                  SliverToBoxAdapter(
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(vertical: AppConstants.mediumSpacing),
                       child: Text(
-                        AppLocalizations.of(context)!.homeNoResultsFound(searchController.text),
-                        style: Theme.of(context).textTheme.bodyLarge?.copyWith(fontWeight: FontWeight.bold),
+                        AppLocalizations.of(context)!.homeListTitle,
+                        style: Theme.of(context).textTheme.headlineSmall,
                         textAlign: TextAlign.center,
                       ),
                     ),
                   ),
-                if (state is ErrorState)
-                  SliverFillRemaining(
-                    hasScrollBody: false,
-                    child: Center(
-                      child: Text(
-                        AppFailureMessage.get((state as ErrorState).error.code),
-                        style: Theme.of(context).textTheme.bodyLarge,
+                  if (state is LoadingState)
+                    SliverFillRemaining(
+                      hasScrollBody: false,
+                      child: LoadingWidget(),
+                    ),
+                  if (state is SuccessState<HomeDataModel> && state.data.filteredPokemons.isNotEmpty)
+                    SliverList.separated(
+                      itemCount: state.data.filteredPokemons.length,
+                      itemBuilder: (context, index) {
+                        final pokemon = state.data.filteredPokemons[index];
+                        return ListViewCard(pokemon: pokemon, openItemDetails: openItemDetails);
+                      },
+                      separatorBuilder: (_, _) {
+                        return const SizedBox(height: AppConstants.mediumSpacing);
+                      },
+                    ),
+                  if (state is SuccessState<HomeDataModel> && state.data.filteredPokemons.isEmpty)
+                    SliverFillRemaining(
+                      hasScrollBody: false,
+                      child: Center(
+                        child: Text(
+                          AppLocalizations.of(context)!.homeNoResultsFound(searchController.text),
+                          style: Theme.of(context).textTheme.bodyLarge?.copyWith(fontWeight: FontWeight.bold),
+                          textAlign: TextAlign.center,
+                        ),
                       ),
                     ),
-                  ),
-              ],
+                  if (state is ErrorState)
+                    SliverFillRemaining(
+                      hasScrollBody: false,
+                      child: Center(
+                        child: Text(
+                          AppFailureMessage.get((state as ErrorState).error.code),
+                          style: Theme.of(context).textTheme.bodyLarge,
+                        ),
+                      ),
+                    ),
+                ],
+              ),
             );
           },
         ),

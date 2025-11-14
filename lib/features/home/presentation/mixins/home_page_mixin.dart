@@ -117,4 +117,8 @@ mixin HomePageMixin<T extends StatefulWidget> on State<T> {
       });
     }
   }
+
+  void onRefresh() {
+    homeStore.loadData();
+  }
 }
