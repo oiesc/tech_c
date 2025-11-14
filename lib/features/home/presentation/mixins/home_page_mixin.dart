@@ -121,6 +121,8 @@ mixin HomePageMixin<T extends StatefulWidget> on State<T> {
   }
 
   void onRefresh() {
+    if (homeStore.state is LoadingState) return;
+    searchController.text = '';
     homeStore.loadData();
   }
 }
