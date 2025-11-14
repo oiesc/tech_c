@@ -1,9 +1,9 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
-import 'package:tech_c/features/home/domain/models/pokemon_model.dart';
-import 'package:tech_c/features/home/infrastructure/repositories/home_repository.dart';
-import 'package:tech_c/global/app_core/domain/models/either.dart';
-import 'package:tech_c/global/app_core/failures/app_failure.dart';
+import 'package:techc/features/home/domain/models/pokemon_model.dart';
+import 'package:techc/features/home/infrastructure/repositories/home_repository.dart';
+import 'package:techc/global/app_core/domain/models/either.dart';
+import 'package:techc/global/app_core/failures/app_failure.dart';
 
 import '../../../../mocks/home_mocks.mocks.dart';
 import '../../../../mocks/home_test_constants.dart';

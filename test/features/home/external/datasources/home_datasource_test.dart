@@ -3,9 +3,9 @@ import 'dart:convert';
 import 'package:dio/dio.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
-import 'package:tech_c/features/home/external/datasources/home_datasource.dart';
-import 'package:tech_c/features/home/external/settings/home_endpoints.dart';
-import 'package:tech_c/features/home/external/settings/home_http_errors.dart';
+import 'package:techc/features/home/external/datasources/home_datasource.dart';
+import 'package:techc/features/home/external/settings/home_endpoints.dart';
+import 'package:techc/features/home/external/settings/home_http_errors.dart';
 
 import '../../../../mocks/home_mocks.mocks.dart';
 import '../../../../mocks/home_test_constants.dart';

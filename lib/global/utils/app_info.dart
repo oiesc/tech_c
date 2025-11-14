@@ -31,6 +31,6 @@ class AppInfo {
   
   /// Get package name
   static String get packageName {
-    return _packageInfo?.packageName ?? 'com.example.flutter_base_project';
+    return _packageInfo?.packageName ?? 'com.project.domain.techc';
   }
 }

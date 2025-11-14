@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:get_it/get_it.dart';
-import 'package:tech_c/global/app_core/store/app_state.dart';
-import 'package:tech_c/global/settings/app_settings_store.dart';
-import 'package:tech_c/global/themes/app_theme.dart';
-import 'package:tech_c/global/themes/app_theme_mode.dart';
+import 'package:techc/global/app_core/store/app_state.dart';
+import 'package:techc/global/settings/app_settings_store.dart';
+import 'package:techc/global/themes/app_theme.dart';
+import 'package:techc/global/themes/app_theme_mode.dart';
 
 void main() {
   testWidgets('App smoke test', (WidgetTester tester) async {
