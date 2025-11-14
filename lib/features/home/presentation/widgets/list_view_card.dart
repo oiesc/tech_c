@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../../global/constants/app_constants.dart';
+import '../../../../global/design_system/design_system.dart';
 import '../../../../global/l10n/app_localizations.dart';
 import '../../domain/models/pokemon_model.dart';
 import 'pokemon/pokemon_property_widget.dart';
@@ -23,12 +24,7 @@ class ListViewCard extends StatelessWidget {
             spacing: AppConstants.smallSpacing,
             children: [
               _HeaderWidget(pokemon: pokemon),
-              Image.network(
-                pokemon.img,
-                height: 150,
-                width: 150,
-                fit: BoxFit.contain,
-              ),
+              ImageWidget.network(pokemon.img),
               Text(
                 pokemon.name,
                 style: Theme.of(context).textTheme.headlineMedium?.copyWith(
@@ -59,6 +55,7 @@ class _HeaderWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       spacing: AppConstants.smallSpacing,
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         Text(
           '#${pokemon.id.toString().padLeft(3, '0')}',
@@ -66,8 +63,7 @@ class _HeaderWidget extends StatelessWidget {
             fontWeight: FontWeight.bold,
           ),
         ),
-        Spacer(),
-        PokemonTypeWidget(types: pokemon.type),
+        Flexible(child: PokemonTypeWidget(types: pokemon.type)),
       ],
     );
   }

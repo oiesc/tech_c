@@ -38,11 +38,20 @@ class _HomePageState extends State<HomePage> with HomePageMixin<HomePage> {
           ),
         ],
       ),
+      floatingActionButton: showScrollToTopButton
+          ? FloatingActionButton(
+              onPressed: () {
+                AppUtils.scrollToTop(scrollController);
+              },
+              child: const Icon(Icons.arrow_upward),
+            )
+          : null,
       body: ScaffoldBody(
         child: ValueStoreBuilder<HomeStore, HomeDataModel>(
           store: homeStore,
           builder: (context, state) {
             return CustomScrollView(
+              controller: scrollController,
               physics: const BouncingScrollPhysics(),
               slivers: [
                 SliverPersistentHeader(

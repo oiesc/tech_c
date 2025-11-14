@@ -17,6 +17,11 @@ mixin HomePageMixin<T extends StatefulWidget> on State<T> {
 
   final TextEditingController searchController = TextEditingController();
 
+  final ScrollController scrollController = ScrollController();
+
+  bool _showScrollToTopButton = false;
+  bool get showScrollToTopButton => _showScrollToTopButton;
+
   bool _homeDataHasFilter = false;
 
   void Function()? _storeListener;
@@ -31,12 +36,15 @@ mixin HomePageMixin<T extends StatefulWidget> on State<T> {
         _homeDataHasFilter = state.data.hasFilter;
       }
     });
+    scrollController.addListener(_canShowScrollToTopButtonListener);
     homeStore.loadData();
   }
 
   @override
   void dispose() {
     searchController.dispose();
+    scrollController.removeListener(_canShowScrollToTopButtonListener);
+    scrollController.dispose();
     _storeListener?.call();
     _removeOverlay();
     super.dispose();
@@ -90,6 +98,7 @@ mixin HomePageMixin<T extends StatefulWidget> on State<T> {
   void openItemDetails(PokemonModel pokemon) {
     AnalyticsService.logSelectContent(contentType: 'pokemon', itemId: '${pokemon.id}-${pokemon.name}');
     showModalBottomSheet(
+      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       isScrollControlled: true,
       constraints: BoxConstraints(
         maxHeight: MediaQuery.of(context).size.height * 0.8,
@@ -97,5 +106,15 @@ mixin HomePageMixin<T extends StatefulWidget> on State<T> {
       context: context,
       builder: (context) => ListViewCardDetail(pokemon: pokemon),
     );
+  }
+
+  void _canShowScrollToTopButtonListener() {
+    final shouldShow = scrollController.offset > 500;
+    if (shouldShow != showScrollToTopButton) {
+      setState(() {
+        if (!mounted) return;
+        _showScrollToTopButton = shouldShow;
+      });
+    }
   }
 }

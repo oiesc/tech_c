@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../../global/constants/app_constants.dart';
+import '../../../../global/design_system/design_system.dart';
 import '../../../../global/l10n/app_localizations.dart';
 import '../../domain/models/pokemon_model.dart';
 import 'pokemon/pokemon_property_widget.dart';
@@ -14,41 +15,34 @@ class ListViewCardDetail extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-      child: Container(
-        width: double.infinity,
-        padding: EdgeInsets.all(AppConstants.mediumSpacing),
-        child: Stack(
-          children: [
-            Column(
-              children: [
-                const _SpacingWidget(),
-                Center(
-                  child: Text.rich(
-                    TextSpan(
-                      text: pokemon.name,
-                      style: Theme.of(context).textTheme.headlineMedium?.copyWith(
-                        fontWeight: FontWeight.bold,
-                      ),
-                      children: [
-                        TextSpan(
-                          text: ' #${pokemon.id.toString().padLeft(3, '0')}',
-                          style: Theme.of(context).textTheme.headlineMedium,
-                        ),
-                      ],
+      child: Stack(
+        children: [
+          Column(
+            children: [
+              const _SpacingWidget(),
+              Center(
+                child: Text.rich(
+                  TextSpan(
+                    text: pokemon.name,
+                    style: Theme.of(context).textTheme.headlineMedium?.copyWith(
+                      fontWeight: FontWeight.bold,
                     ),
-                    textAlign: TextAlign.center,
+                    children: [
+                      TextSpan(
+                        text: ' #${pokemon.id.toString().padLeft(3, '0')}',
+                        style: Theme.of(context).textTheme.headlineMedium,
+                      ),
+                    ],
                   ),
+                  textAlign: TextAlign.center,
                 ),
-                Center(
-                  child: Image.network(
-                    pokemon.img,
-                    height: 150,
-                    width: 150,
-                    fit: BoxFit.contain,
-                  ),
-                ),
-                Flexible(
-                  child: SingleChildScrollView(
+              ),
+              ImageWidget.network(pokemon.img),
+              Flexible(
+                child: SingleChildScrollView(
+                  child: Container(
+                    padding: const EdgeInsets.all(AppConstants.mediumSpacing),
+                    decoration: BoxDecoration(color: Theme.of(context).cardColor),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -195,15 +189,15 @@ class ListViewCardDetail extends StatelessWidget {
                     ),
                   ),
                 ),
-              ],
-            ),
-            Positioned(
-              top: 0,
-              right: 0,
-              child: IconButton(onPressed: () => context.pop(), icon: const Icon(Icons.close)),
-            ),
-          ],
-        ),
+              ),
+            ],
+          ),
+          Positioned(
+            top: 0,
+            right: 0,
+            child: IconButton(onPressed: () => context.pop(), icon: const Icon(Icons.close)),
+          ),
+        ],
       ),
     );
   }
