@@ -14,14 +14,29 @@ A Flutter application that displays a collection of Pokémon with their details,
 
 ## 📸 Screenshots
 
-*Screenshots will be added here to showcase the app's interface and features.*
+<div align="center">
+  
+### 🏠 Home & Navigation
+<div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; margin: 20px 0;">
+  <img src="https://github.com/user-attachments/assets/26adca64-c093-4d29-a27d-70a67b57335f" alt="App Home Screen" width="280" style="border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);"/>
+  <img src="https://github.com/user-attachments/assets/480c2482-f60f-40e3-b68b-b25e8c8651d6" alt="Navigation Menu" width="280" style="border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);"/>
+</div>
 
-<img width="350" alt="Screenshot_1763105745" src="https://github.com/user-attachments/assets/26adca64-c093-4d29-a27d-70a67b57335f" />
-<img width="350" alt="Screenshot_1763105562" src="https://github.com/user-attachments/assets/480c2482-f60f-40e3-b68b-b25e8c8651d6" />
-<img width="350" alt="Screenshot_1763105559" src="https://github.com/user-attachments/assets/6701aa8e-17b7-46b4-8ae0-8dfcb5227cf5" />
-<img width="350" alt="Screenshot_1763105549" src="https://github.com/user-attachments/assets/cf808599-6e45-4d05-b3f1-d6e87efaa470" />
-<img width="350" alt="Screenshot_1763105547" src="https://github.com/user-attachments/assets/c35dd3d5-450e-4104-af6e-7b4ebf7bcc4e" />
-<img width="350" alt="Screenshot_1763105543" src="https://github.com/user-attachments/assets/ea72bb94-a3c9-4541-9f9d-31fef1f409d1" />
+### 🎯 Features & Details
+<div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; margin: 20px 0;">
+  <img src="https://github.com/user-attachments/assets/6701aa8e-17b7-46b4-8ae0-8dfcb5227cf5" alt="Feature Details" width="280" style="border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);"/>
+  <img src="https://github.com/user-attachments/assets/cf808599-6e45-4d05-b3f1-d6e87efaa470" alt="Interactive Elements" width="280" style="border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);"/>
+</div>
+
+### ⚙️ Settings & Configuration
+<div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; margin: 20px 0;">
+  <img src="https://github.com/user-attachments/assets/c35dd3d5-450e-4104-af6e-7b4ebf7bcc4e" alt="Settings Screen" width="280" style="border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);"/>
+  <img src="https://github.com/user-attachments/assets/ea72bb94-a3c9-4541-9f9d-31fef1f409d1" alt="Theme Options" width="280" style="border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);"/>
+</div>
+
+</div>
+
+---
 
 
 ## 🚀 How to Install
