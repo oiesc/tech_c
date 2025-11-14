@@ -2,6 +2,8 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 
+import '../constants/app_constants.dart';
+
 export 'app_failure_message.dart';
 export 'app_info.dart';
 export 'app_logger.dart';
@@ -44,7 +46,7 @@ class AppUtils {
   static void scrollToTop(ScrollController controller) {
     controller.animateTo(
       0.0,
-      duration: const Duration(milliseconds: 500),
+      duration: AppConstants.longAnimationDuration,
       curve: Curves.easeInOut,
     );
   }
