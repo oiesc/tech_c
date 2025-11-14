@@ -6,12 +6,18 @@ import '../services/navigation_service.dart';
 typedef L10nTextBuilder = String Function(AppLocalizations l10n);
 
 class AppFailureMessage {
-  /// Returns a localized string based on the given error code.
+  /// Returns a localized string based on the given code.
   ///
-  /// If the [context] is null, it will use the [NavigationService.context].
+  /// If a [BuildContext] is provided, it will be used to get the
+  /// current [AppLocalizations] instance. Otherwise,
+  /// [NavigationService.context] will be used.
   ///
-  /// The method will return the code itself as a fallback message if the
-  /// error code is not recognized.
+  /// If the [AppLocalizations] instance is null, the original
+  /// code will be returned.
+  ///
+  /// The localized string will be looked up using the given code
+  /// as the key. If no matching key is found, the original code
+  /// will be returned.
   static String get(String code, {BuildContext? context}) {
     context ??= NavigationService.context;
 
