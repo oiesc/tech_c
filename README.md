@@ -189,7 +189,8 @@ flutter test test/features/home/
 | `json_annotation` | ^4.9.0 | JSON serialization annotations |
 | `logger` | ^2.5.0 | Logging system |
 | `package_info_plus` | ^8.1.1 | Package information |
-| `package_info_plus` | ^8.1.1 | Package information |
+
+**📝 Note**: This project uses a **custom State Management system (ValueStore)** instead of BLoC, Riverpod, or Provider, offering greater simplicity and flexibility for direct method calls.
 
 ### Development Dependencies
 
@@ -241,6 +242,103 @@ lib/
     ├── themes/                 # Application themes
     ├── router/                 # Route configuration (GoRouter)
     └── utils/                  # Global utilities (AppLogger, AppInfo)
+```
+
+## 🔄 State Management - ValueStore
+
+### Why ValueStore Instead of BLoC?
+
+This project uses a custom state management system called **ValueStore** instead of the popular BLoC pattern. Here are the main reasons:
+
+#### 🎯 **Simplicity and Flexibility**
+
+**ValueStore:**
+```dart
+class HomeStore extends ValueStore<HomeDataModel> {
+  final HomeUsecase _homeUsecase;
+  
+  HomeStore(this._homeUsecase) : super(const IdleState());
+
+  // Direct methods - no need for events
+  Future<void> loadData() async {
+    updateState(const LoadingState());
+    final result = await _homeUsecase.loadPokemonData();
+    
+    result.fold(
+      (failure) => updateState(ErrorState(failure)),
+      (data) => updateState(SuccessState(HomeDataModel(...))),
+    );
+  }
+
+  void search(String query) {
+    // Direct logic, no need to create events
+    final filtered = _allPokemons.where((p) => 
+      p.name.toLowerCase().contains(query.toLowerCase())
+    ).toList();
+    
+    updateState(SuccessState(HomeDataModel(...)));
+  }
+}
+```
+
+**Equivalent BLoC would be:**
+```dart
+// Would need to create events
+abstract class HomeEvent {}
+class LoadDataEvent extends HomeEvent {}
+class SearchEvent extends HomeEvent {
+  final String query;
+  SearchEvent(this.query);
+}
+
+// Then map events to states
+class HomeBloc extends Bloc<HomeEvent, HomeState> {
+  HomeBloc() : super(HomeInitial()) {
+    on<LoadDataEvent>(_onLoadData);
+    on<SearchEvent>(_onSearch);
+  }
+  
+  // More boilerplate...
+}
+```
+
+#### 🚀 **ValueStore Advantages**
+
+| Feature | ValueStore | BLoC |
+|---------|------------|------|
+| **Boilerplate** | Minimal | High (events + states) |
+| **Flexibility** | Direct methods | Only through events |
+| **Testability** | Excellent | Excellent |
+| **Performance** | Optimized with ValueNotifier | Optimized with Streams |
+| **Learning Curve** | Low | Medium/High |
+| **Debugging** | Simple | Complex (streams) |
+
+#### 💡 **Key Features**
+
+1. **Typed States**: `IdleState`, `LoadingState`, `SuccessState`, `ErrorState`
+2. **Pattern Matching**: `when()` method for elegant state handling
+3. **Listeners**: Reactive observation system
+4. **Testability**: Easy mocking and state verification
+
+#### 📝 **Usage Example in Widget**
+
+```dart
+class HomePage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return ValueStoreBuilder<HomeStore, HomeDataModel>(
+      store: GetIt.I<HomeStore>(),
+      builder: (context, state) {
+        return state.when(
+          idle: () => const Text('Ready to load'),
+          loading: () => const CircularProgressIndicator(),
+          success: (data) => PokemonList(pokemons: data.filteredPokemons),
+          error: (error) => ErrorWidget(error: error),
+        );
+      },
+    );
+  }
+}
 ```
 
 ## 🔧 Useful Scripts and Commands
