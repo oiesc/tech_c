@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../../global/constants/app_constants.dart';
+import '../../../../global/design_system/design_system.dart';
 import '../../../../global/l10n/app_localizations.dart';
 import '../../domain/models/pokemon_model.dart';
 import 'pokemon/pokemon_property_widget.dart';
@@ -36,14 +37,7 @@ class ListViewCardDetail extends StatelessWidget {
                   textAlign: TextAlign.center,
                 ),
               ),
-              Center(
-                child: Image.network(
-                  pokemon.img,
-                  height: 150,
-                  width: 150,
-                  fit: BoxFit.contain,
-                ),
-              ),
+              ImageWidget.network(pokemon.img),
               Flexible(
                 child: SingleChildScrollView(
                   child: Container(

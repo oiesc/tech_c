@@ -9,7 +9,7 @@ class PokemonTypeWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
+    return Wrap(
       spacing: AppConstants.smallSpacing,
       children: [
         ...types.map(
