@@ -59,4 +59,7 @@ class AppConstants {
 
   /// 40
   static const double extraLargeIconSize = 40.0;
+
+  /// 64
+  static const double hugeIconSize = 64.0;
 }

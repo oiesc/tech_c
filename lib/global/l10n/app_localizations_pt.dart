@@ -24,9 +24,6 @@ class AppLocalizationsPt extends AppLocalizations {
   String get navHome => 'Início';
 
   @override
-  String get homeWelcome => 'Bem-vindo ao Tech_C';
-
-  @override
   String get settingsTitle => 'Configurações';
 
   @override
@@ -60,4 +57,126 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get settingsRetry => 'Tentar Novamente';
+
+  @override
+  String get homeWelcome => 'Bem-vindo ao Tech_C';
+
+  @override
+  String get homeListTitle => 'Encontre seu Pokémon favorito e explore seus detalhes!';
+
+  @override
+  String homeNoResultsFound(Object query) {
+    return 'Nenhum resultado encontrado para \"$query\"';
+  }
+
+  @override
+  String get filterByType => 'Filtrar por Tipo';
+
+  @override
+  String get clearFilter => 'Limpar Filtro';
+
+  @override
+  String get errorLocaleUpdateFailure => 'Falha ao atualizar idioma. Tente novamente.';
+
+  @override
+  String get errorNetworkError => 'Erro de rede. Verifique sua conexão com a internet.';
+
+  @override
+  String get errorDataParsingError => 'Erro ao processar dados. Tente novamente mais tarde.';
+
+  @override
+  String get errorTimeout => 'Tempo limite da requisição. Tente novamente.';
+
+  @override
+  String get errorServerError => 'Erro no servidor. Tente novamente mais tarde.';
+
+  @override
+  String get errorUnauthorized => 'Acesso negado. Verifique suas credenciais.';
+
+  @override
+  String get errorNotFound => 'Recurso solicitado não encontrado.';
+
+  @override
+  String get errorUnknown => 'Ocorreu um erro inesperado. Tente novamente.';
+
+  @override
+  String get homeErrorNullData => 'Nenhum dado foi recebido do servidor.';
+
+  @override
+  String get homeErrorInvalidData => 'Os dados recebidos são inválidos.';
+
+  @override
+  String get homeErrorNotFound => 'O recurso solicitado não foi encontrado.';
+
+  @override
+  String get homeErrorServerError => 'Ocorreu um erro interno no servidor.';
+
+  @override
+  String get homeErrorFailedRequest => 'A solicitação falhou ao ser concluída.';
+
+  @override
+  String get homeErrorUnexpectedError => 'Ocorreu um erro inesperado.';
+
+  @override
+  String get homeErrorFormatError => 'Ocorreu um erro de formato nos dados.';
+
+  @override
+  String get homeErrorNoData => 'Nenhum dado disponível para exibir.';
+
+  @override
+  String get errorSettingsInitializationFailure => 'Falha ao inicializar configurações. Tente novamente.';
+
+  @override
+  String get errorSettingsLoadFailure => 'Falha ao carregar configurações. Tente novamente.';
+
+  @override
+  String get errorThemeUpdateFailure => 'Falha ao atualizar tema. Tente novamente.';
+
+  @override
+  String get pokemonHeight => 'Altura';
+
+  @override
+  String get pokemonWeight => 'Peso';
+
+  @override
+  String get pokemonType => 'Tipo:';
+
+  @override
+  String get pokemonTypes => 'Tipos:';
+
+  @override
+  String get pokemonCandy => 'Doce:';
+
+  @override
+  String get pokemonCandyCount => 'Quantidade de Doces: ';
+
+  @override
+  String get pokemonMultipliers => 'Multiplicadores:';
+
+  @override
+  String get pokemonWeakness => 'Fraqueza:';
+
+  @override
+  String get pokemonWeaknesses => 'Fraquezas:';
+
+  @override
+  String get pokemonInformations => 'Informações';
+
+  @override
+  String get pokemonEgg => 'Ovo:';
+
+  @override
+  String get pokemonSpawnChance => 'Chance de Aparição:';
+
+  @override
+  String get pokemonAvgSpawns => 'Aparições Médias:';
+
+  @override
+  String get pokemonSpawnTime => 'Horário de Aparição:';
+
+  @override
+  String get pokemonPreviousEvolution => 'Evolução Anterior';
+
+  @override
+  String get pokemonNextEvolution => 'Próxima Evolução';
 }

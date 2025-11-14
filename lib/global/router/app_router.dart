@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 import '../modules/module_manager.dart';
+import '../services/navigation_service.dart';
 import 'route_paths.dart';
 
 /// Application router configuration using GoRouter
@@ -11,8 +12,9 @@ class AppRouter {
   /// Initialize router with modules
   static void initialize() {
     final moduleManager = ModuleManager();
-    
+
     _router = GoRouter(
+      navigatorKey: NavigationService.navigatorKey,
       initialLocation: RoutePaths.home,
       debugLogDiagnostics: true,
       routes: [

@@ -7,6 +7,8 @@ import '../../../global/design_system/scaffold_body.dart';
 import '../../../global/l10n/app_localizations.dart';
 import '../../../global/settings/app_settings_store.dart';
 import '../../../global/themes/app_theme_mode.dart';
+import '../../../global/utils/app_utils.dart';
+import '../widgets/language_selector.dart';
 
 /// Settings page for the application
 class SettingsPage extends StatelessWidget {
@@ -33,10 +35,8 @@ class SettingsPage extends StatelessWidget {
                   spacing: AppConstants.mediumSpacing,
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    const Icon(Icons.error, size: 48, color: Colors.red),
-                    Text(
-                      AppLocalizations.of(context)!.settingsErrorLoading(error.message),
-                    ),
+                    const Icon(Icons.error, size: AppConstants.extraLargeIconSize, color: Colors.red),
+                    Text(AppFailureMessage.get(error.code)),
                     ElevatedButton(
                       onPressed: () => settingsStore.initialize(),
                       child: Text(AppLocalizations.of(context)!.settingsRetry),
@@ -52,115 +52,95 @@ class SettingsPage extends StatelessWidget {
   }
 
   Widget _buildSettingsContent(BuildContext context, AppSettingsStore settingsStore, AppSettings settings) {
-    return Padding(
-      padding: const EdgeInsets.all(AppConstants.mediumSpacing),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          // Theme Section
-          Card(
-            child: Padding(
-              padding: const EdgeInsets.all(AppConstants.mediumSpacing),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    AppLocalizations.of(context)!.settingsThemeSection,
-                    style: Theme.of(context).textTheme.titleMedium,
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      spacing: AppConstants.mediumSpacing,
+      children: [
+        Card(
+          child: Padding(
+            padding: const EdgeInsets.all(AppConstants.mediumSpacing),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  AppLocalizations.of(context)!.settingsThemeSection,
+                  style: Theme.of(context).textTheme.titleMedium,
+                ),
+                const SizedBox(height: AppConstants.smallSpacing),
+                RadioGroup<AppThemeMode>(
+                  groupValue: settings.appThemeMode,
+                  onChanged: (value) {
+                    if (value != null) {
+                      settingsStore.updateThemeMode(value);
+                    }
+                  },
+                  child: Column(
+                    children: AppThemeMode.values
+                        .map(
+                          (mode) => RadioListTile<AppThemeMode>(
+                            title: Text(_getThemeDisplayName(context, mode)),
+                            value: mode,
+                            selected: mode == settings.appThemeMode,
+                          ),
+                        )
+                        .toList(),
                   ),
-                  const SizedBox(height: AppConstants.smallSpacing),
-                  ...AppThemeMode.values.map(
-                    (mode) => _buildThemeOption(
-                      context: context,
-                      mode: mode,
-                      currentMode: settings.appThemeMode,
-                      onChanged: (value) => settingsStore.updateThemeMode(value),
-                    ),
-                  ),
-                ],
-              ),
+                ),
+              ],
             ),
           ),
-          const SizedBox(height: AppConstants.mediumSpacing),
-
-          // Language Section
-          Card(
-            child: Padding(
-              padding: const EdgeInsets.all(AppConstants.mediumSpacing),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    AppLocalizations.of(context)!.settingsLanguageSection,
-                    style: Theme.of(context).textTheme.titleMedium,
-                  ),
-                  const SizedBox(height: AppConstants.smallSpacing),
-                  _buildLanguageOption(
-                    title: AppLocalizations.of(context)!.settingsLanguageEnglish,
-                    value: 'en',
-                    currentValue: settings.locale.languageCode,
-                    onChanged: (value) => settingsStore.updateLocale(Locale(value)),
-                  ),
-                  _buildLanguageOption(
-                    title: AppLocalizations.of(context)!.settingsLanguagePortuguese,
-                    value: 'pt',
-                    currentValue: settings.locale.languageCode,
-                    onChanged: (value) => settingsStore.updateLocale(Locale(value)),
-                  ),
-                ],
-              ),
+        ),
+        // Language Section
+        Card(
+          child: Padding(
+            padding: const EdgeInsets.all(AppConstants.mediumSpacing),
+            child: Column(
+              spacing: AppConstants.mediumSpacing,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  AppLocalizations.of(context)!.settingsLanguageSection,
+                  style: Theme.of(context).textTheme.titleMedium,
+                ),
+                LanguageSegmentedSelector(
+                  selectedLanguage: settings.locale.languageCode,
+                  onLanguageChanged: (languageCode) {
+                    settingsStore.updateLocale(Locale(languageCode));
+                  },
+                ),
+              ],
             ),
           ),
-          const SizedBox(height: AppConstants.mediumSpacing),
-
-          // App Info Section
-          Card(
-            child: Padding(
-              padding: const EdgeInsets.all(AppConstants.mediumSpacing),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    AppLocalizations.of(context)!.settingsAppInfoSection,
-                    style: Theme.of(context).textTheme.titleMedium,
-                  ),
-                  const SizedBox(height: AppConstants.smallSpacing),
-                  ListTile(
-                    leading: const Icon(Icons.info),
-                    title: Text(AppLocalizations.of(context)!.appName),
-                    subtitle: Text(AppConstants.appName),
-                    contentPadding: EdgeInsets.zero,
-                  ),
-                  ListTile(
-                    leading: const Icon(Icons.tag),
-                    title: Text(AppLocalizations.of(context)!.appVersion),
-                    subtitle: Text('${AppConstants.appVersion} (${AppConstants.buildNumber})'),
-                    contentPadding: EdgeInsets.zero,
-                  ),
-                ],
-              ),
+        ),
+        // App Info Section
+        Card(
+          child: Padding(
+            padding: const EdgeInsets.all(AppConstants.mediumSpacing),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  AppLocalizations.of(context)!.settingsAppInfoSection,
+                  style: Theme.of(context).textTheme.titleMedium,
+                ),
+                const SizedBox(height: AppConstants.smallSpacing),
+                ListTile(
+                  leading: const Icon(Icons.info),
+                  title: Text(AppLocalizations.of(context)!.appName),
+                  subtitle: Text(AppConstants.appName),
+                  contentPadding: EdgeInsets.zero,
+                ),
+                ListTile(
+                  leading: const Icon(Icons.tag),
+                  title: Text(AppLocalizations.of(context)!.appVersion),
+                  subtitle: Text('${AppConstants.appVersion} (${AppConstants.buildNumber})'),
+                  contentPadding: EdgeInsets.zero,
+                ),
+              ],
             ),
           ),
-        ],
-      ),
-    );
-  }
-
-  Widget _buildThemeOption({
-    required BuildContext context,
-    required AppThemeMode mode,
-    required AppThemeMode currentMode,
-    required Future<void> Function(AppThemeMode) onChanged,
-  }) {
-    return RadioListTile<AppThemeMode>(
-      title: Text(_getThemeDisplayName(context, mode)),
-      value: mode,
-      groupValue: currentMode,
-      onChanged: (selectedMode) async {
-        if (selectedMode != null) {
-          await onChanged(selectedMode);
-        }
-      },
+        ),
+      ],
     );
   }
 
@@ -174,23 +154,5 @@ class SettingsPage extends StatelessWidget {
       case AppThemeMode.system:
         return localizations?.settingsThemeSystem ?? 'System';
     }
-  }
-
-  Widget _buildLanguageOption({
-    required String title,
-    required String value,
-    required String currentValue,
-    required Future<void> Function(String) onChanged,
-  }) {
-    return RadioListTile<String>(
-      title: Text(title),
-      value: value,
-      groupValue: currentValue,
-      onChanged: (selectedValue) async {
-        if (selectedValue != null) {
-          await onChanged(selectedValue);
-        }
-      },
-    );
   }
 }

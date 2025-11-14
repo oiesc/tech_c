@@ -7,8 +7,6 @@
   
   "navHome": "Home",
   
-  "homeWelcome": "Welcome to Tech_C",
-  
   "settingsTitle": "Settings",
   "settingsThemeSection": "Theme",
   "settingsLanguageSection": "Language",
@@ -19,5 +17,50 @@
   "settingsLanguageEnglish": "English",
   "settingsLanguagePortuguese": "Português",
   "settingsErrorLoading": "Error loading settings: {error}",
-  "settingsRetry": "Retry"
+  "settingsRetry": "Retry",
+  
+  "homeWelcome": "Welcome to Tech_C",
+  "homeListTitle": "Find your favorite Pokemon and explore their details!",
+  "homeNoResultsFound": "No results found for \"{query}\"",
+  "filterByType": "Filter by Type",
+  "clearFilter": "Clear Filter",
+  
+  "errorLocaleUpdateFailure": "Failed to update language. Please try again.",
+  "errorNetworkError": "Network error occurred. Please check your internet connection.",
+  "errorDataParsingError": "Error processing data. Please try again later.",
+  "errorTimeout": "Request timeout. Please try again.",
+  "errorServerError": "Server error occurred. Please try again later.",
+  "errorUnauthorized": "Access denied. Please check your credentials.",
+  "errorNotFound": "Requested resource not found.",
+  "errorUnknown": "An unexpected error occurred. Please try again.",
+  
+  "homeErrorNullData": "No data received from the server.",
+  "homeErrorInvalidData": "The data received is invalid.",
+  "homeErrorNotFound": "The requested resource was not found.",
+  "homeErrorServerError": "An internal server error occurred.",
+  "homeErrorFailedRequest": "The request failed to complete.",
+  "homeErrorUnexpectedError": "An unexpected error occurred.",
+  "homeErrorFormatError": "Data format error occurred.",
+  "homeErrorNoData": "No data available to display.",
+  
+  "errorSettingsInitializationFailure": "Failed to initialize settings. Please try again.",
+  "errorSettingsLoadFailure": "Failed to load settings. Please try again.",
+  "errorThemeUpdateFailure": "Failed to update theme. Please try again.",
+  
+  "pokemonHeight": "Height",
+  "pokemonWeight": "Weight",
+  "pokemonType": "Type:",
+  "pokemonTypes": "Types:",
+  "pokemonCandy": "Candy:",
+  "pokemonCandyCount": "Candy Count: ",
+  "pokemonMultipliers": "Multipliers:",
+  "pokemonWeakness": "Weakness:",
+  "pokemonWeaknesses": "Weaknesses:",
+  "pokemonInformations": "Informations",
+  "pokemonEgg": "Egg:",
+  "pokemonSpawnChance": "Spawn Chance:",
+  "pokemonAvgSpawns": "Avg Spawns:",
+  "pokemonSpawnTime": "Spawn Time:",
+  "pokemonPreviousEvolution": "Previous Evolution",
+  "pokemonNextEvolution": "Next Evolution"
 }
