@@ -138,7 +138,7 @@ class HomeTestHelpers {
       count,
       (index) => PokemonModel(
         id: index + 1,
-        number: '${(index + 1).toString().padLeft(3, '0')}',
+        number: (index + 1).toString().padLeft(3, '0'),
         name: 'Pokemon${index + 1}',
         img: 'http://example.com/pokemon${index + 1}.png',
         type: ['Normal'],
