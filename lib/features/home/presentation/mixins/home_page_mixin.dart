@@ -57,6 +57,7 @@ mixin HomePageMixin<T extends StatefulWidget> on State<T> {
 
     _overlayEntry = OverlayEntry(
       builder: (context) => GestureDetector(
+        behavior: HitTestBehavior.opaque,
         onTap: () => _removeOverlay(),
         child: Container(
           color: Colors.black.withValues(alpha: 0.5),
@@ -65,6 +66,7 @@ mixin HomePageMixin<T extends StatefulWidget> on State<T> {
             onFilterChanged: (type) {
               if (type.isNotEmpty || _homeDataHasFilter) {
                 AnalyticsService.logEvent(name: 'filter_by_type', parameters: {'type': type});
+                searchController.text = '';
                 homeStore.filterByType(type);
               }
               _removeOverlay();
