@@ -7,12 +7,12 @@ import 'dart:async' as _i4;
 
 import 'package:mockito/mockito.dart' as _i1;
 import 'package:mockito/src/dummies.dart' as _i8;
-import 'package:tech_c/features/home/domain/models/pokemon_model.dart' as _i7;
-import 'package:tech_c/features/home/domain/usecases/home_usecase.dart' as _i3;
-import 'package:tech_c/features/home/infrastructure/repositories/home_repository.dart'
+import 'package:techc/features/home/domain/models/pokemon_model.dart' as _i7;
+import 'package:techc/features/home/domain/usecases/home_usecase.dart' as _i3;
+import 'package:techc/features/home/infrastructure/repositories/home_repository.dart'
     as _i2;
-import 'package:tech_c/global/app_core/domain/models/either.dart' as _i5;
-import 'package:tech_c/global/app_core/failures/app_failure.dart' as _i6;
+import 'package:techc/global/app_core/domain/models/either.dart' as _i5;
+import 'package:techc/global/app_core/failures/app_failure.dart' as _i6;
 
 // ignore_for_file: type=lint
 // ignore_for_file: avoid_redundant_argument_values

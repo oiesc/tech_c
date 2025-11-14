@@ -1,4 +1,5 @@
 import '../../../../global/app_core/app_core.dart';
+import '../../../../global/services/analytics_service.dart';
 import '../../../../global/utils/debouncer.dart';
 import '../../domain/models/home_data_model.dart';
 import '../../domain/models/pokemon_model.dart';
@@ -39,6 +40,7 @@ class HomeStore extends ValueStore<HomeDataModel> {
     _debouncer(
       () {
         final q = query.toLowerCase();
+        AnalyticsService.logSearch(q);
         final filtered = _allPokemons.where((p) {
           return p.name.toLowerCase().contains(q);
         }).toList();

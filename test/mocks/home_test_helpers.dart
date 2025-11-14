@@ -1,4 +1,4 @@
-import 'package:tech_c/features/home/domain/models/pokemon_model.dart';
+import 'package:techc/features/home/domain/models/pokemon_model.dart';
 
 /// Helpers para criar objetos de teste a partir das constantes
 class HomeTestHelpers {
