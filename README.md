@@ -16,22 +16,19 @@ A Flutter application that displays a collection of Pokémon with their details,
 
 <div align="center">
   
-### 🏠 Home & Navigation
 <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; margin: 20px 0;">
-  <img src="https://github.com/user-attachments/assets/26adca64-c093-4d29-a27d-70a67b57335f" alt="App Home Screen" width="280" style="border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);"/>
-  <img src="https://github.com/user-attachments/assets/480c2482-f60f-40e3-b68b-b25e8c8651d6" alt="Navigation Menu" width="280" style="border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);"/>
+  <img src="https://github.com/user-attachments/assets/26adca64-c093-4d29-a27d-70a67b57335f" alt="App Home Screen" width="350" style="border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);"/>
+  <img src="https://github.com/user-attachments/assets/480c2482-f60f-40e3-b68b-b25e8c8651d6" alt="Navigation Menu" width="350" style="border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);"/>
 </div>
 
-### 🎯 Features & Details
 <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; margin: 20px 0;">
-  <img src="https://github.com/user-attachments/assets/6701aa8e-17b7-46b4-8ae0-8dfcb5227cf5" alt="Feature Details" width="280" style="border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);"/>
-  <img src="https://github.com/user-attachments/assets/cf808599-6e45-4d05-b3f1-d6e87efaa470" alt="Interactive Elements" width="280" style="border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);"/>
+  <img src="https://github.com/user-attachments/assets/6701aa8e-17b7-46b4-8ae0-8dfcb5227cf5" alt="Feature Details" width="350" style="border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);"/>
+  <img src="https://github.com/user-attachments/assets/cf808599-6e45-4d05-b3f1-d6e87efaa470" alt="Interactive Elements" width="350" style="border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);"/>
 </div>
 
-### ⚙️ Settings & Configuration
 <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; margin: 20px 0;">
-  <img src="https://github.com/user-attachments/assets/c35dd3d5-450e-4104-af6e-7b4ebf7bcc4e" alt="Settings Screen" width="280" style="border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);"/>
-  <img src="https://github.com/user-attachments/assets/ea72bb94-a3c9-4541-9f9d-31fef1f409d1" alt="Theme Options" width="280" style="border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);"/>
+  <img src="https://github.com/user-attachments/assets/c35dd3d5-450e-4104-af6e-7b4ebf7bcc4e" alt="Settings Screen" width="350" style="border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);"/>
+  <img src="https://github.com/user-attachments/assets/ea72bb94-a3c9-4541-9f9d-31fef1f409d1" alt="Theme Options" width="350" style="border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);"/>
 </div>
 
 </div>
