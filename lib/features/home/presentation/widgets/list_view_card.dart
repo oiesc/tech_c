@@ -30,6 +30,7 @@ class ListViewCard extends StatelessWidget {
                 style: Theme.of(context).textTheme.headlineMedium?.copyWith(
                   fontWeight: FontWeight.bold,
                 ),
+                textAlign: TextAlign.center,
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
