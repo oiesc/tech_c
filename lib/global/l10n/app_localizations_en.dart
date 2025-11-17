@@ -21,9 +21,6 @@ class AppLocalizationsEn extends AppLocalizations {
   String get appName => 'App Name';
 
   @override
-  String get navHome => 'Home';
-
-  @override
   String get settingsTitle => 'Settings';
 
   @override
@@ -62,15 +59,17 @@ class AppLocalizationsEn extends AppLocalizations {
   String get homeWelcome => 'Welcome to Tech_C';
 
   @override
-  String get homeListTitle => 'Find your favorite Pokemon and explore their details!';
-
-  @override
   String homeNoResultsFound(Object query) {
     return 'No results found for \"$query\"';
   }
 
   @override
   String get filterByType => 'Filter by Type';
+
+  @override
+  String filteringBy(Object type) {
+    return 'Filtering by: $type';
+  }
 
   @override
   String get clearFilter => 'Clear Filter';

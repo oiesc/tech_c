@@ -116,12 +116,6 @@ abstract class AppLocalizations {
   /// **'App Name'**
   String get appName;
 
-  /// No description provided for @navHome.
-  ///
-  /// In en, this message translates to:
-  /// **'Home'**
-  String get navHome;
-
   /// No description provided for @settingsTitle.
   ///
   /// In en, this message translates to:
@@ -194,12 +188,6 @@ abstract class AppLocalizations {
   /// **'Welcome to Tech_C'**
   String get homeWelcome;
 
-  /// No description provided for @homeListTitle.
-  ///
-  /// In en, this message translates to:
-  /// **'Find your favorite Pokemon and explore their details!'**
-  String get homeListTitle;
-
   /// No description provided for @homeNoResultsFound.
   ///
   /// In en, this message translates to:
@@ -211,6 +199,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Filter by Type'**
   String get filterByType;
+
+  /// No description provided for @filteringBy.
+  ///
+  /// In en, this message translates to:
+  /// **'Filtering by: {type}'**
+  String filteringBy(Object type);
 
   /// No description provided for @clearFilter.
   ///

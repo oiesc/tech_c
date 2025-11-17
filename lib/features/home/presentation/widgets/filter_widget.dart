@@ -4,10 +4,41 @@ import '../../../../global/constants/app_constants.dart';
 import '../../../../global/l10n/app_localizations.dart';
 import '../../utils/home_utils.dart';
 
+class SelectedFilterWidget extends StatelessWidget {
+  final String selectedType;
+  const SelectedFilterWidget({
+    required this.selectedType,
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    if (selectedType.isEmpty) return const SizedBox.shrink();
+
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Text(
+        AppLocalizations.of(context)!.filteringBy(selectedType),
+        maxLines: 1,
+        overflow: TextOverflow.ellipsis,
+        style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+          fontWeight: FontWeight.bold,
+        ),
+      ),
+    );
+  }
+}
+
 class FilterWidget extends StatefulWidget {
   final List<String> allTypes;
   final Function(String type) onFilterChanged;
-  const FilterWidget({required this.allTypes, required this.onFilterChanged, super.key});
+  final String selectedType;
+  const FilterWidget({
+    required this.allTypes,
+    required this.onFilterChanged,
+    required this.selectedType,
+    super.key,
+  });
 
   @override
   State<FilterWidget> createState() => _FilterWidgetState();
@@ -75,13 +106,15 @@ class _FilterWidgetState extends State<FilterWidget> {
                             children: widget.allTypes.map((type) {
                               return ActionChip(
                                 side: BorderSide.none,
-                                backgroundColor: HomeUtils.getChipColor(type),
-                                label: Text(
-                                  type,
-                                  style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                                    color: HomeUtils.getChipTextColor(type),
-                                  ),
-                                ),
+                                label: Text(type),
+                                backgroundColor: type == widget.selectedType
+                                    ? HomeUtils.getChipColor(type)
+                                    : Theme.of(context).chipTheme.backgroundColor,
+                                labelStyle: type == widget.selectedType
+                                    ? Theme.of(context).textTheme.bodyMedium?.copyWith(
+                                        color: HomeUtils.getChipTextColor(type),
+                                      )
+                                    : null,
                                 onPressed: () => widget.onFilterChanged(type),
                               );
                             }).toList(),

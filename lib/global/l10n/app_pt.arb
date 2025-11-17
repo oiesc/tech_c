@@ -5,8 +5,6 @@
   "appVersion": "Versão",
   "appName": "Nome do App",
   
-  "navHome": "Início",
-  
   "settingsTitle": "Configurações",
   "settingsThemeSection": "Tema",
   "settingsLanguageSection": "Idioma",
@@ -20,9 +18,9 @@
   "settingsRetry": "Tentar Novamente",
   
   "homeWelcome": "Bem-vindo ao Tech_C",
-  "homeListTitle": "Encontre seu Pokémon favorito e explore seus detalhes!",
   "homeNoResultsFound": "Nenhum resultado encontrado para \"{query}\"",
   "filterByType": "Filtrar por Tipo",
+  "filteringBy": "Filtrando por: {type}",
   "clearFilter": "Limpar Filtro",
   "searchPokemon": "Buscar Pokémon",
   

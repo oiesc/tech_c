@@ -61,20 +61,11 @@ class _HomePageState extends State<HomePage> with HomePageMixin<HomePage> {
                   SliverPersistentHeader(
                     pinned: true,
                     delegate: ListViewHeader(
-                      homeStore: homeStore,
+                      onSearch: (query) => homeStore.search(query),
                       controller: searchController,
                       backgroundColor: Theme.of(context).scaffoldBackgroundColor,
                       onFilterPressed: onFilterPressed,
-                    ),
-                  ),
-                  SliverToBoxAdapter(
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(vertical: AppConstants.mediumSpacing),
-                      child: Text(
-                        AppLocalizations.of(context)!.homeListTitle,
-                        style: Theme.of(context).textTheme.headlineSmall,
-                        textAlign: TextAlign.center,
-                      ),
+                      selectedType: homeStore.selectedType,
                     ),
                   ),
                   if (state is LoadingState)

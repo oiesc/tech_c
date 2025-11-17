@@ -15,6 +15,9 @@ class HomeStore extends ValueStore<HomeDataModel> {
     return _allPokemons.expand((p) => p.type).toSet().toList()..sort();
   }
 
+  String _selectedType = '';
+  String get selectedType => _selectedType;
+
   Future<void> loadData() async {
     updateState(const LoadingState());
     _allPokemons.clear();
@@ -37,6 +40,7 @@ class HomeStore extends ValueStore<HomeDataModel> {
 
   void search(String query) {
     updateState(const LoadingState());
+    _selectedType = '';
     _debouncer(
       () {
         final q = query.toLowerCase();
@@ -63,6 +67,7 @@ class HomeStore extends ValueStore<HomeDataModel> {
 
     await Future.delayed(const Duration(milliseconds: 500)); // Simulate delay
 
+    _selectedType = type;
     if (type.isEmpty) {
       updateState(
         SuccessState(

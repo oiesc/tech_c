@@ -63,6 +63,7 @@ mixin HomePageMixin<T extends StatefulWidget> on State<T> {
           color: Colors.black.withValues(alpha: 0.5),
           child: FilterWidget(
             allTypes: homeStore.allTypes,
+            selectedType: homeStore.selectedType,
             onFilterChanged: (type) {
               if (type.isNotEmpty || _homeDataHasFilter) {
                 AnalyticsService.logEvent(name: 'filter_by_type', parameters: {'type': type});
