@@ -4,7 +4,8 @@ import '../../global/modules/base_module.dart';
 import '../../global/network/app_http.dart';
 import '../../global/router/route_paths.dart';
 import 'domain/usecases/home_usecase.dart';
-import 'external/datasources/home_datasource.dart';
+import 'external/datasources/home_local_datasource.dart';
+import 'external/datasources/home_remote_datasource.dart';
 import 'infrastructure/repositories/home_repository.dart';
 import 'presentation/pages/home_page.dart';
 import 'presentation/stores/home_store.dart';
@@ -14,12 +15,17 @@ class HomeModule extends BaseModule {
 
   @override
   void registerDependencies() {
-    getIt.registerLazySingleton<HomeDatasource>(
-      () => HomeDatasource(getIt<AppHttp>()),
+    getIt.registerLazySingleton<HomeRemoteDatasource>(
+      () => HomeRemoteDatasource(getIt<AppHttp>()),
     );
-
+    getIt.registerLazySingleton<HomeLocalDatasource>(
+      () => HomeLocalDatasource(),
+    );
     getIt.registerLazySingleton<HomeRepository>(
-      () => HomeRepository(getIt<HomeDatasource>()),
+      () => HomeRepository(
+        getIt<HomeRemoteDatasource>(),
+        getIt<HomeLocalDatasource>(),
+      ),
     );
 
     getIt.registerLazySingleton<HomeUsecase>(

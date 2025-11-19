@@ -21,7 +21,6 @@ class HomeStore extends ValueStore<HomeDataModel> {
   Future<void> loadData() async {
     updateState(const LoadingState());
     _allPokemons.clear();
-    await Future.delayed(const Duration(seconds: 3)); // Simulate delay
     final result = await _homeUsecase.loadPokemonData();
 
     result.fold((failure) => updateState(ErrorState(failure)), (data) {

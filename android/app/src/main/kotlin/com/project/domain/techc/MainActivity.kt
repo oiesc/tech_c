@@ -11,6 +11,7 @@ import com.google.firebase.analytics.FirebaseAnalytics
 class MainActivity: FlutterActivity() {
 
     private val CHANNEL = "app.analytics.channel"
+    private val CACHE_CHANNEL = "app.cache.channel"
     private lateinit var analytics: FirebaseAnalytics
 
     override fun configureFlutterEngine(flutterEngine: FlutterEngine) {
@@ -24,6 +25,15 @@ class MainActivity: FlutterActivity() {
                     "logEvent" -> handleLogEvent(call, result)
                     "setUserId" -> handleSetUserId(call, result)
                     "setUserProperty" -> handleSetUserProperty(call, result)
+                    else -> result.notImplemented()
+                }
+            }
+
+        MethodChannel(flutterEngine.dartExecutor.binaryMessenger, CACHE_CHANNEL)
+            .setMethodCallHandler { call, result ->
+                when (call.method) {
+                    "saveFileOnCache" -> saveFileOnCache(call, result)
+                    "getFileFromCache" -> getFileFromCache(call, result)
                     else -> result.notImplemented()
                 }
             }
@@ -99,5 +109,25 @@ class MainActivity: FlutterActivity() {
         } catch (e: Exception) {
             result.error("ERROR", "Failed to set user property: ${e.message}", null)
         }
+    }
+
+    private fun saveFileOnCache(call: MethodCall, result: Result) {
+        val args = call.arguments as? Map<*, *> ?: return
+        val key = args["key"] as? String ?: return
+        val stringValue = args["value"] as? String ?: return
+        val sharedPref = this.getPreferences(MODE_PRIVATE) ?: return 
+        with (sharedPref.edit()) {
+            putString(key, stringValue)
+            apply()
+        }
+        result.success(null)
+    }
+
+    private fun getFileFromCache(call: MethodCall, result: Result) {
+        val args = call.arguments as? Map<*, *> ?: return
+        val key = args["key"] as? String ?: return
+        val sharedPref = this.getPreferences(MODE_PRIVATE) ?: return
+        val savedString = sharedPref.getString(key, "")
+        result.success(savedString)
     }
 }

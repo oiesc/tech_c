@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'package:dio/dio.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
-import 'package:techc/features/home/external/datasources/home_datasource.dart';
+import 'package:techc/features/home/external/datasources/home_remote_datasource.dart';
 import 'package:techc/features/home/external/settings/home_endpoints.dart';
 import 'package:techc/features/home/external/settings/home_http_errors.dart';
 
@@ -11,12 +11,12 @@ import '../../../../mocks/home_mocks.mocks.dart';
 import '../../../../mocks/home_test_constants.dart';
 
 void main() {
-  late HomeDatasource datasource;
+  late HomeRemoteDatasource datasource;
   late MockAppHttp mockAppHttp;
 
   setUp(() {
     mockAppHttp = MockAppHttp();
-    datasource = HomeDatasource(mockAppHttp);
+    datasource = HomeRemoteDatasource(mockAppHttp);
   });
 
   group('HomeDatasource', () {

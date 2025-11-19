@@ -27,11 +27,44 @@ class TestChannelMocks {
     );
   }
 
+  /// Configura mock para o cache channel
+  static void setupCacheChannelMock() {
+    TestDefaultBinaryMessengerBinding.instance.defaultBinaryMessenger
+        .setMockMethodCallHandler(
+      const MethodChannel('app.cache.channel'),
+      (MethodCall methodCall) async {
+        // Mock implementation para cache methods
+        switch (methodCall.method) {
+          case 'saveFileOnCache':
+            return null; // Save sempre retorna null
+          case 'getFileFromCache':
+            return null; // Get retorna null (sem cache)
+          default:
+            throw MissingPluginException(
+              'No implementation found for method ${methodCall.method} '
+              'on channel app.cache.channel',
+            );
+        }
+      },
+    );
+  }
+
+  /// Configura todos os mocks de channels
+  static void setupAllChannelMocks() {
+    setupAnalyticsChannelMock();
+    setupCacheChannelMock();
+  }
+
   /// Remove todos os mock handlers
   static void tearDownChannelMocks() {
     TestDefaultBinaryMessengerBinding.instance.defaultBinaryMessenger
         .setMockMethodCallHandler(
       const MethodChannel('app.analytics.channel'),
+      null,
+    );
+    TestDefaultBinaryMessengerBinding.instance.defaultBinaryMessenger
+        .setMockMethodCallHandler(
+      const MethodChannel('app.cache.channel'),
       null,
     );
   }

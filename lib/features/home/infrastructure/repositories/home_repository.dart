@@ -2,18 +2,30 @@ import '../../../../global/app_core/domain/models/either.dart';
 import '../../../../global/app_core/failures/app_failure.dart';
 import '../../../../global/utils/app_utils.dart';
 import '../../domain/models/pokemon_model.dart';
-import '../../external/datasources/home_datasource.dart';
+import '../../external/datasources/home_local_datasource.dart';
+import '../../external/datasources/home_remote_datasource.dart';
 import '../../external/settings/home_http_errors.dart';
 import '../settings/home_repository_errors.dart';
 
 class HomeRepository {
-  final HomeDatasource _homeDatasource;
+  final HomeRemoteDatasource _remote;
+  final HomeLocalDatasource _local;
 
-  HomeRepository(this._homeDatasource);
+  HomeRepository(this._remote, this._local);
 
   Future<Either<AppGenericFailure, List<PokemonModel>>> loadPokemonData() async {
     try {
-      final response = await _homeDatasource.fetchPokemonData();
+      Map<String, dynamic>? response;
+      final cachedData = await _local.getPokemonCache();
+
+      if (cachedData == null) {
+        AppLogger.info('No cached data found. Fetching from datasource.');
+        response = await _remote.fetchPokemonData();
+        _local.savePokemonCache(response);
+      } else {
+        AppLogger.info('Cached data found. Using cached data.');
+        response = cachedData;
+      }
       final pokemonList = (response['pokemon'] as List)
           .map((pokemonJson) => PokemonModel.fromJson(pokemonJson))
           .toList();

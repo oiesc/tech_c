@@ -6,10 +6,10 @@ import '../../../../global/network/app_http.dart';
 import '../settings/home_endpoints.dart';
 import '../settings/home_http_errors.dart';
 
-class HomeDatasource {
+class HomeRemoteDatasource {
   final AppHttp _appHttp;
 
-  HomeDatasource(this._appHttp);
+  HomeRemoteDatasource(this._appHttp);
 
   Future<Map<String, dynamic>> fetchPokemonData() async {
     try {

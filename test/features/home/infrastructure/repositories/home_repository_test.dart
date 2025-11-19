@@ -10,11 +10,20 @@ import '../../../../mocks/home_test_constants.dart';
 
 void main() {
   late HomeRepository repository;
-  late MockHomeDatasource mockHomeDatasource;
+  late MockHomeRemoteDatasource mockHomeRemoteDatasource;
+  late MockHomeLocalDatasource mockHomeLocalDatasource;
+
+  setUpAll(() {
+    TestWidgetsFlutterBinding.ensureInitialized();
+  });
 
   setUp(() {
-    mockHomeDatasource = MockHomeDatasource();
-    repository = HomeRepository(mockHomeDatasource);
+    mockHomeRemoteDatasource = MockHomeRemoteDatasource();
+    mockHomeLocalDatasource = MockHomeLocalDatasource();
+    repository = HomeRepository(mockHomeRemoteDatasource, mockHomeLocalDatasource);
+
+    when(mockHomeLocalDatasource.getPokemonCache()).thenAnswer((_) async => null);
+    when(mockHomeLocalDatasource.savePokemonCache(any)).thenAnswer((_) async {});
   });
 
   group('HomeRepository', () {
@@ -22,7 +31,7 @@ void main() {
       const mockApiResponse = HomeTestConstants.mockApiPokemonData;
 
       test('should return Right with list of PokemonModel when datasource returns valid data', () async {
-        when(mockHomeDatasource.fetchPokemonData()).thenAnswer((_) async => mockApiResponse);
+        when(mockHomeRemoteDatasource.fetchPokemonData()).thenAnswer((_) async => mockApiResponse);
 
         final result = await repository.loadPokemonData();
 
@@ -40,12 +49,12 @@ void main() {
           },
         );
 
-        verify(mockHomeDatasource.fetchPokemonData()).called(1);
+        verify(mockHomeRemoteDatasource.fetchPokemonData()).called(1);
       });
 
       test('should return Right with empty list when pokemon array is empty', () async {
         const emptyResponse = HomeTestConstants.emptyApiResponse;
-        when(mockHomeDatasource.fetchPokemonData()).thenAnswer((_) async => emptyResponse);
+        when(mockHomeRemoteDatasource.fetchPokemonData()).thenAnswer((_) async => emptyResponse);
 
         final result = await repository.loadPokemonData();
 
@@ -83,7 +92,7 @@ void main() {
               },
             ],
           };
-          when(mockHomeDatasource.fetchPokemonData()).thenAnswer((_) async => minimalResponse);
+          when(mockHomeRemoteDatasource.fetchPokemonData()).thenAnswer((_) async => minimalResponse);
 
           final result = await repository.loadPokemonData();
 
@@ -103,7 +112,9 @@ void main() {
         });
 
         test('should handle pokemon with null evolution arrays', () async {
-          when(mockHomeDatasource.fetchPokemonData()).thenAnswer((_) async => HomeTestConstants.nullEvolutionApiResponse);
+          when(
+            mockHomeRemoteDatasource.fetchPokemonData(),
+          ).thenAnswer((_) async => HomeTestConstants.nullEvolutionApiResponse);
 
           final result = await repository.loadPokemonData();
 
