@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import '../../../../global/app_core/domain/models/either.dart';
 import '../../../../global/app_core/failures/app_failure.dart';
 import '../../../../global/utils/app_utils.dart';
@@ -16,7 +18,8 @@ class HomeRepository {
   Future<Either<AppGenericFailure, List<PokemonModel>>> loadPokemonData() async {
     try {
       Map<String, dynamic>? response;
-      final cachedData = await _local.getPokemonCache();
+      // only implemented caching for Android for now
+      final cachedData = Platform.isAndroid ? await _local.getPokemonCache() : null;
 
       if (cachedData == null) {
         AppLogger.info('No cached data found. Fetching from datasource.');
